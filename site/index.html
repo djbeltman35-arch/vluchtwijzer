@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Vluchtwijzer – Goedkope vliegtickets vergelijken vanaf Nederland, België en Duitsland</title>
-<meta name="description" content="Vergelijk goedkope vliegtickets vanaf Schiphol, Eindhoven, Weeze, Düsseldorf, Brussel en meer tegelijk. Zie de goedkoopste vluchten en boek direct via Momondo of Skyscanner. Gratis app.">
+<title>Vluchtwijzer – goedkope vliegtickets vergelijken (NL, BE, DE)</title>
+<meta name="description" content="Vergelijk goedkope vliegtickets vanaf Schiphol, Eindhoven, Weeze, Düsseldorf, Brussel en meer tegelijk. Zie de goedkoopste vluchten en boek direct via…">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://vluchtwijzer.netlify.app/">
 <meta property="og:url" content="https://vluchtwijzer.netlify.app/">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:site_name" content="Vluchtwijzer">
-<meta property="og:title" content="Vluchtwijzer – Goedkope vliegtickets vergelijken">
+<meta property="og:title" content="Vluchtwijzer – goedkope vliegtickets vergelijken (NL, BE, DE)">
 <meta property="og:description" content="Zoek vanaf meerdere vliegvelden tegelijk, ook net over de grens, en vind de goedkoopste vlucht.">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
@@ -27,7 +27,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Vluchtwijzer">
-<style>@font-face{font-family:'Atkinson Hyperlegible';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/atkinson-hyperlegible-400.woff2) format('woff2')}@font-face{font-family:'Atkinson Hyperlegible';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/atkinson-hyperlegible-700.woff2) format('woff2')}@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/big-shoulders-display-700.woff2) format('woff2')}@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:800;font-display:swap;src:url(/fonts/big-shoulders-display-800.woff2) format('woff2')}@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:900;font-display:swap;src:url(/fonts/big-shoulders-display-900.woff2) format('woff2')}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/jetbrains-mono-500.woff2) format('woff2')}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/jetbrains-mono-700.woff2) format('woff2')}
+<link rel="preload" href="/fonts/big-shoulders-display-900.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/big-shoulders-display-800.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="/fonts/atkinson-hyperlegible-400.woff2" as="font" type="font/woff2" crossorigin><style>@font-face{font-family:'Atkinson Hyperlegible';font-style:normal;font-weight:400;font-display:optional;src:url(/fonts/atkinson-hyperlegible-400.woff2) format('woff2')}@font-face{font-family:'Atkinson Hyperlegible';font-style:normal;font-weight:700;font-display:optional;src:url(/fonts/atkinson-hyperlegible-700.woff2) format('woff2')}@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/big-shoulders-display-700.woff2) format('woff2')}@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:800;font-display:swap;src:url(/fonts/big-shoulders-display-800.woff2) format('woff2')}@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:900;font-display:swap;src:url(/fonts/big-shoulders-display-900.woff2) format('woff2')}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:optional;src:url(/fonts/jetbrains-mono-500.woff2) format('woff2')}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:optional;src:url(/fonts/jetbrains-mono-700.woff2) format('woff2')}
 /* Layout: één kolom die van boven naar beneden leest. 1) korte belofte, 2) zoekkaart in vier genummerde vragen, 3) "De goedkoopste vluchten!" met grote prijskaarten, 4) extra's ingeklapt */
 :root{
   --bg:#EEF3F8; --paper:#FFFFFF; --ink:#13233A; --muted:#5B6C83; --line:#D3DDE8; --soft:#F5F8FB;
@@ -223,7 +223,7 @@ dialog ol{padding-left:20px}
 .sister:hover{border-color:var(--accent)}
 footer .apps{font-size:14px}
 @media (min-width:960px){.sister{grid-column:2}}
-</style>
+.brand b{font-size:min(44px,12.25vw)}.hero h1{font-size:min(40px,8.6vw)}@media(min-width:960px){.brand b{font-size:56px}.hero h1{font-size:44px}}</style>
 </head>
 <body>
 <div class="wrap">
@@ -261,9 +261,9 @@ footer .apps{font-size:14px}
     <span class="num" aria-hidden="true">2</span>
     <h2><label for="toQ">Waar wil je heen?</label></h2>
     <div class="body ac">
-      <input class="field" id="toQ" placeholder="Typ een stad of land, bijv. Kreta" role="combobox" aria-expanded="false" aria-controls="toSug" aria-autocomplete="list">
+      <input class="field" id="toQ" placeholder="Typ een stad of land, bijv. Kreta" role="combobox" aria-expanded="false" aria-controls="toSug" aria-autocomplete="list" hidden>
       <ul class="sug" id="toSug" role="listbox" hidden></ul>
-      <div class="field dest" id="toPick" hidden></div>
+      <div class="field dest" id="toPick"><span class="city"><b>Barcelona</b><span>Spanje · <span class="code">BCN</span></span></span><button type="button" id="chg">Wijzig</button></div>
     </div>
   </div>
 
@@ -682,7 +682,7 @@ $("f").addEventListener("submit",ev=>{ev.preventDefault();run(true)});
 if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
 
 /* kop "De goedkoopste vluchten!" altijd op één regel: lettergrootte passend maken */
-function fitOne(h,max){
+function fitOne(h,max){if(document.fonts&&document.fonts.status!=="loaded")return;
   if(!h) return; let size=max; h.style.fontSize=size+"px";
   while(h.scrollWidth>h.clientWidth&&size>16){size--;h.style.fontSize=size+"px"}
 }
