@@ -2,7 +2,7 @@
 
 > Gratis vergelijker van vliegtickets vanaf vliegvelden in Nederland, België en Duitsland. Toont de goedkoopste vluchten (prijzen via Travelpayouts/Aviasales) en linkt door naar boekingssites.
 
-Gemaakt door Erik (erik@beltman.email). Geen reclame, geen tracking-cookies.
+Gemaakt door Erik (djbeltman35@gmail.com). Geen reclame, geen tracking-cookies.
 
 ## Kernfeiten
 - Vluchtwijzer zoekt goedkope vliegtickets vanaf 16 vliegvelden tegelijk: Schiphol, Eindhoven, Rotterdam The Hague, Groningen Eelde en Maastricht Aachen (NL); Brussel Zaventem, Charleroi, Antwerpen, Luik en Oostende (BE); Düsseldorf, Weeze, Keulen/Bonn, Dortmund, Münster/Osnabrück en Bremen (DE).
