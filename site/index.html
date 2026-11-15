@@ -193,7 +193,7 @@ footer{color:var(--muted);font-size:13px;text-align:center;display:grid;gap:8px}
 footer p{margin:0}
 footer a{color:var(--accent)}
 footer .made{font-size:15px;font-weight:700;color:var(--ink)}
-footer .made a{color:var(--accent);text-decoration:none}
+footer .made a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 
 dialog{border:1px solid var(--line);border-radius:var(--r);background:var(--paper);color:var(--ink);max-width:min(480px,calc(100vw - 32px));padding:20px}
 dialog::backdrop{background:rgba(0,0,0,.45)}
@@ -413,6 +413,12 @@ form.card{box-shadow:var(--lift-hi)}
     <li><button type="button" class="tile" data-naar="TFS"><span class="board">TFS</span><b>Tenerife</b><span class="where">Spanje · Canarische Eilanden</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-tenerife.html">Gids: goedkoop naar Tenerife</a></li>
     <li><button type="button" class="tile" data-naar="LPA"><span class="board">LPA</span><b>Gran Canaria</b><span class="where">Spanje · Canarische Eilanden</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-gran-canaria.html">Gids: goedkoop naar Gran Canaria</a></li>
     <li><button type="button" class="tile" data-naar="AYT"><span class="board">AYT</span><b>Antalya</b><span class="where">Turkije · Turkse Rivièra</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-antalya.html">Gids: goedkoop naar Antalya</a></li>
+    <li><button type="button" class="tile" data-naar="BCN"><span class="board">BCN</span><b>Barcelona</b><span class="where">Spanje · stedentrip</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-barcelona.html">Gids: goedkoop naar Barcelona</a></li>
+    <li><button type="button" class="tile" data-naar="ROM"><span class="board">ROM</span><b>Rome</b><span class="where">Italië · stedentrip</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-rome.html">Gids: goedkoop naar Rome</a></li>
+    <li><button type="button" class="tile" data-naar="LIS"><span class="board">LIS</span><b>Lissabon</b><span class="where">Portugal · stedentrip</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-lissabon.html">Gids: goedkoop naar Lissabon</a></li>
+    <li><button type="button" class="tile" data-naar="PMI"><span class="board">PMI</span><b>Mallorca</b><span class="where">Spanje · Balearen</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-mallorca.html">Gids: goedkoop naar Mallorca</a></li>
+    <li><button type="button" class="tile" data-naar="HER"><span class="board">HER</span><b>Kreta</b><span class="where">Griekenland · eiland</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-kreta.html">Gids: goedkoop naar Kreta</a></li>
+    <li><button type="button" class="tile" data-naar="CUR"><span class="board">CUR</span><b>Curaçao</b><span class="where">Caribisch gebied</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-curacao.html">Gids: goedkoop naar Curaçao</a></li>
   </ul>
   <h3>Vliegvelden in de buurt</h3>
   <p class="froms"><a href="/gids/vliegen-vanaf-schiphol.html">Schiphol</a> <a href="/gids/vliegen-vanaf-rotterdam.html">Rotterdam</a> <a href="/gids/vliegen-vanaf-eindhoven.html">Eindhoven</a> <a href="/gids/vliegen-vanaf-maastricht.html">Maastricht</a> <a href="/gids/vliegen-vanaf-weeze.html">Weeze</a> <a href="/gids/vliegen-vanaf-dusseldorf.html">Düsseldorf</a> <a href="/gids/vliegen-vanaf-keulen-bonn.html">Keulen-Bonn</a> <a href="/gids/vliegen-vanaf-brussel-zaventem.html">Brussel</a> <a href="/gids/vliegen-vanaf-charleroi.html">Charleroi</a></p>
@@ -433,7 +439,7 @@ form.card{box-shadow:var(--lift-hi)}
   <div class="inner">
     <p>Vluchtwijzer zoekt goedkope vliegtickets vanaf meerdere vliegvelden tegelijk: Schiphol, Eindhoven, Rotterdam, Groningen en Maastricht, maar ook net over de grens in Weeze, Düsseldorf, Keulen, Brussel en Charleroi. Je typt gewoon een plaatsnaam, zoals Tenerife, Barcelona of Kreta.</p>
     <p>De app laat de goedkoopste vluchten zien, retour of enkele reis, desgewenst alleen directe vluchten en met een of twee dagen speling. Met één tik open je die vlucht bij Momondo, of vergelijk je bij Skyscanner, Kayak, Expedia en Opodo. Vluchtwijzer is gratis en werkt op je telefoon en computer.</p>
-    <p>Meer weten? Lees de <a href="gids/">reisgids</a>, bijvoorbeeld over <a href='/gids/vliegen-vanaf-weeze'>vliegen vanaf Weeze</a> of <a href='/gids/eindhoven-airport-dicht-2027'>Eindhoven Airport dicht in 2027</a>.</p>
+    <p>Meer weten? Lees de <a href="gids/">reisgids</a>, bijvoorbeeld over <a href='/gids/vliegen-vanaf-weeze.html'>vliegen vanaf Weeze</a> of <a href='/gids/eindhoven-airport-dicht-2027.html'>Eindhoven Airport dicht in 2027</a>.</p>
   </div>
 </details>
 
@@ -752,7 +758,7 @@ async function cheapest(s){
       const from=d.origin_airport||d.from, to=d.destination_airport||s.t;
       const city=c=>esc(((BY[c]||{n:c}).n).replace(/ \(.+\)$/,""));
       const backStops=d.return_at?(d.return_transfers===0?"direct":d.return_transfers+" overstap"+(d.return_transfers>1?"pen":"")):"";
-      return `<li><a class="deal" href="${go}" target="_blank" rel="noopener" aria-label="${i+1}e: ${esc(air)}, vanaf €${Math.round(d.price)} per persoon. Bekijk de actuele prijs en boek">
+      return `<li><a class="deal" href="${go}" target="_blank" rel="noopener">
         <div class="main">
           <div class="who"><span class="badge${i===0?" first":""}">${i===0?"Goedkoopst":"#"+(i+1)}</span><span class="air">${esc(air)}</span><span class="iata" aria-hidden="true">${esc(from)} <i>✈</i> ${esc(to)}</span></div>
           <div class="amt"><span class="from">vanaf</span><b>€${Math.round(d.price)}</b><small>p.p.</small></div>
@@ -783,10 +789,10 @@ async function priceCal(s){
   const ps=days.map(k=>best[k].price), lo=Math.min(...ps), hi=Math.max(...ps);
   const month=new Date(m+"-15T12:00").toLocaleDateString("nl-NL",{month:"long"});
   box.innerHTML=`<h3>Goedkoopste vertrekdagen in ${month}</h3><p class="note">${s.ow?"Enkele reis":"Retour; de verblijfsduur kan per dag verschillen"}, per persoon. Tik op een dag om die te kiezen.</p>
-  <div class="cal-strip" role="list">${days.map(k=>{const d=best[k], h=hi===lo?60:Math.round(24+(d.price-lo)/(hi-lo)*56);
+  <div class="cal-strip" role="group" aria-label="Prijs per vertrekdag">${days.map(k=>{const d=best[k], h=hi===lo?60:Math.round(24+(d.price-lo)/(hi-lo)*56);
     const dt=new Date(k+"T12:00"), wd=dt.toLocaleDateString("nl-NL",{weekday:"short"}), dn=dt.getDate();
     const cls=(d.price===lo?" low":"")+(k===s.d1?" sel":"");
-    return `<button type="button" role="listitem" class="day${cls}" data-d="${k}" data-r="${d.return_at?d.return_at.slice(0,10):""}" aria-label="${esc(nl(k))}: vanaf €${Math.round(d.price)}${d.return_at?", terug "+esc(nl(d.return_at.slice(0,10))):""}"><span class="bar" style="height:${h}px"></span><b>€${Math.round(d.price)}</b><span class="dd">${wd} ${dn}</span></button>`}).join("")}</div>`;
+    return `<button type="button" class="day${cls}" data-d="${k}" data-r="${d.return_at?d.return_at.slice(0,10):""}" aria-label="€${Math.round(d.price)} ${esc(nl(k))}${d.return_at?", terug "+esc(nl(d.return_at.slice(0,10))):""}"><span class="bar" style="height:${h}px"></span><b>€${Math.round(d.price)}</b><span class="dd">${wd} ${dn}</span></button>`}).join("")}</div>`;
   box.hidden=false;
   box.querySelectorAll(".day").forEach(b=>b.onclick=()=>{$("d1").value=b.dataset.d;if(!oneWay&&b.dataset.r)$("d2").value=b.dataset.r;run(true)});
   const sel=box.querySelector(".day.sel"), st=box.querySelector(".cal-strip"); if(sel) st.scrollLeft=sel.offsetLeft-st.clientWidth/2+sel.offsetWidth/2;
@@ -828,8 +834,9 @@ if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.se
 
 /* kop "De goedkoopste vluchten!" altijd op één regel: lettergrootte passend maken */
 function fitOne(h,max){if(document.fonts&&document.fonts.status!=="loaded")return;
-  if(!h) return; let size=max; h.style.fontSize=size+"px";
-  while(h.scrollWidth>h.clientWidth&&size>16){size--;h.style.fontSize=size+"px"}
+  if(!h) return; h.style.fontSize=max+"px"; const sw=h.scrollWidth, cw=h.clientWidth;
+  if(sw<=cw) return; let size=Math.max(16,Math.floor(max*cw/sw)); h.style.fontSize=size+"px";
+  while(size>16&&h.scrollWidth>h.clientWidth){size--;h.style.fontSize=size+"px"}
 }
 function fitBig(){const wide=innerWidth>=960;fitOne(document.querySelector(".results h2.big"),wide?60:48);fitOne(document.querySelector(".hero h1"),wide?44:40);const b=document.querySelector(".brand b");if(b){b.style.overflow="hidden";fitOne(b,wide?56:44)}}
 fitBig(); addEventListener("resize",fitBig);

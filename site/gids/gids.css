@@ -42,7 +42,7 @@ li{margin-bottom:6px;max-width:66ch}
 .sources a{color:var(--muted)}
 footer{margin-top:32px;text-align:center;color:var(--muted);font-size:14px}
 footer .made{font-weight:700;color:var(--ink);font-size:15px}
-footer .made a{text-decoration:none}
+footer .made a{text-decoration:underline;text-underline-offset:3px}
 .cmp th,.cmp td{font-size:15px}
 .cmp thead th{background:var(--soft);color:var(--ink);width:auto}
 .cmp td:first-child{font-weight:700;white-space:nowrap}
