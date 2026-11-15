@@ -1,0 +1,16 @@
+{
+  "name": "Vluchtwijzer",
+  "short_name": "Vluchtwijzer",
+  "description": "Vind de goedkoopste vlucht vanaf meerdere vliegvelden en vergelijk op de best geteste sites.",
+  "lang": "nl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EAF0F6",
+  "theme_color": "#0A5FB4",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

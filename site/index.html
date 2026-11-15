@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Vluchtwijzer – Goedkope vliegtickets vergelijken vanaf Nederland, België en Duitsland</title>
+<meta name="description" content="Vergelijk goedkope vliegtickets vanaf Schiphol, Eindhoven, Weeze, Düsseldorf, Brussel en meer tegelijk. Zie de goedkoopste vluchten en boek direct via Momondo of Skyscanner. Gratis app.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vluchtwijzer.netlify.app/">
+<meta property="og:url" content="https://vluchtwijzer.netlify.app/">
+<meta property="og:image" content="https://vluchtwijzer.netlify.app/deelplaatje.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:site_name" content="Vluchtwijzer">
+<meta property="og:title" content="Vluchtwijzer – Goedkope vliegtickets vergelijken">
+<meta property="og:description" content="Zoek vanaf meerdere vliegvelden tegelijk, ook net over de grens, en vind de goedkoopste vlucht.">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Vluchtwijzer","applicationCategory":"TravelApplication","operatingSystem":"Alle (web-app)","inLanguage":"nl","description":"Gratis app om goedkope vliegtickets te vergelijken vanaf vliegvelden in Nederland, België en Duitsland.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"Erik"}}
+</script>
+<meta name="theme-color" content="#0A5FB4">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Vluchtwijzer">
+<style>@font-face{font-family:'Atkinson Hyperlegible';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/atkinson-hyperlegible-400.woff2) format('woff2')}@font-face{font-family:'Atkinson Hyperlegible';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/atkinson-hyperlegible-700.woff2) format('woff2')}@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/big-shoulders-display-700.woff2) format('woff2')}@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:800;font-display:swap;src:url(/fonts/big-shoulders-display-800.woff2) format('woff2')}@font-face{font-family:'Big Shoulders Display';font-style:normal;font-weight:900;font-display:swap;src:url(/fonts/big-shoulders-display-900.woff2) format('woff2')}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:500;font-display:swap;src:url(/fonts/jetbrains-mono-500.woff2) format('woff2')}@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/jetbrains-mono-700.woff2) format('woff2')}
+/* Layout: één kolom die van boven naar beneden leest. 1) korte belofte, 2) zoekkaart in vier genummerde vragen, 3) "De goedkoopste vluchten!" met grote prijskaarten, 4) extra's ingeklapt */
+:root{
+  --bg:#EEF3F8; --paper:#FFFFFF; --ink:#13233A; --muted:#5B6C83; --line:#D3DDE8; --soft:#F5F8FB;
+  --accent:#0A5FB4; --accent-ink:#FFFFFF; --accent-soft:#E3EEF9; --signal:#F2B200; --signal-ink:#1A1400; --good:#1D7A4C; --good-soft:#E3F3EA; --bad:#B8322A;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --r:14px; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#0D1520; --paper:#152131; --ink:#E7EEF7; --muted:#97A8BE; --line:#2A3B52; --soft:#1A283A;
+  --accent:#5BA6F2; --accent-ink:#06121F; --accent-soft:#1B3150; --good:#62CC98; --good-soft:#163527; --bad:#F08A80; color-scheme:dark}}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
+[hidden]{display:none!important}
+button{font:inherit;color:inherit}
+.wrap{max-width:640px;margin:0 auto;padding-block:16px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* kop */
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.mark{width:52px;height:52px;border-radius:12px;background:var(--accent);display:grid;place-items:center;flex:none}
+.mark svg{width:32px;height:32px;fill:#fff}
+.brand b{font-family:var(--f-display);font-weight:900;-webkit-text-stroke:.6px currentColor;font-size:44px;letter-spacing:.02em;text-transform:uppercase;line-height:1;white-space:nowrap}
+.hero h1{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:40px;line-height:1.05;margin:4px 0 0;white-space:nowrap;overflow:hidden}
+.brand b span{background:var(--signal);color:var(--signal-ink);padding:0 .08em;margin-left:.04em;-webkit-text-stroke-color:var(--signal-ink)}
+
+/* zoekkaart */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 16px}
+form.card{display:grid;gap:0;padding:6px 16px 18px}
+.step{display:grid;grid-template-columns:32px minmax(0,1fr);gap:4px 12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.step:last-of-type{border-bottom:0}
+.num{grid-row:1 / span 2;width:32px;height:32px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;display:grid;place-items:center;font-size:15px}
+.step h2{margin:3px 0 8px;font-size:18px;font-weight:700;line-height:1.3}
+.step .body{display:grid;grid-template-columns:minmax(0,1fr);gap:10px;min-width:0}
+.hint{margin:0;font-size:14px;color:var(--muted)}
+.field{width:100%;min-width:0;font:inherit;font-size:17px;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-height:50px}
+label{display:grid;gap:4px;min-width:0}
+.lbl{font-size:13px;font-weight:700;color:var(--muted)}
+
+/* meerkeuze vertrek */
+.ms{position:relative}
+.ms-btn{display:flex;align-items:center;gap:10px;text-align:left;cursor:pointer}
+.ms-btn .codes{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
+.ms-btn .cnt{font-size:13px;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 9px;font-weight:700;white-space:nowrap}
+.ms-btn::after{content:"▾";color:var(--muted)}
+.ms-btn[aria-expanded="true"]::after{content:"▴"}
+.ms-panel{position:absolute;z-index:30;left:0;right:0;top:100%;margin-top:6px;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.2);padding:12px;display:grid;gap:10px}
+#msList{max-height:min(50vh,360px);overflow:auto;display:grid;gap:12px}
+.grp{display:grid;gap:2px}
+.grp h4{margin:0 0 2px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.opt{display:flex;align-items:center;gap:12px;padding:10px 8px;border-radius:8px;cursor:pointer}
+.opt:hover{background:var(--soft)}
+.opt input{width:22px;height:22px;accent-color:var(--accent);flex:none;margin:0}
+.ms-foot{display:flex;justify-content:space-between;gap:8px}
+.ms-foot button,.btns button{font-weight:700;padding:11px 16px;border-radius:10px;border:1px solid var(--line);background:var(--soft);cursor:pointer}
+.ms-foot .primary,.btns .primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+
+/* plaats zoeken */
+.ac{position:relative}
+.sug{position:absolute;z-index:20;left:0;right:0;top:100%;margin:6px 0 0;padding:4px;list-style:none;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.2);max-height:300px;overflow:auto}
+.sug li{padding:10px;border-radius:8px;cursor:pointer;display:flex;gap:10px;align-items:baseline}
+.sug li[aria-selected="true"],.sug li:hover{background:var(--soft)}
+.sug small{color:var(--muted);margin-left:auto}
+.code{font-family:var(--f-mono);font-weight:700;color:var(--accent);font-size:.9em}
+.dest{display:flex;gap:12px;align-items:center}
+.dest .city{display:grid;min-width:0}
+.dest .city b{font-size:17px}
+.dest .city span{font-size:14px;color:var(--muted)}
+.dest button{margin-left:auto;border:0;background:none;color:var(--accent);font-weight:700;cursor:pointer;padding:6px}
+
+/* knoppenrijen */
+.seg{display:flex;gap:4px;padding:4px;border-radius:12px;background:var(--soft);border:1px solid var(--line)}
+.seg button{flex:1;padding:10px 6px;border-radius:9px;border:0;background:none;cursor:pointer;font-weight:700;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--paper);color:var(--accent);box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.dates{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dates input{font-size:16px}
+
+/* personen + direct */
+.pax{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.stepper{display:flex;align-items:center;gap:6px}
+.stepper button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--soft);font-size:22px;font-weight:700;cursor:pointer;line-height:1}
+.stepper input{width:3ch;text-align:center;border:0;background:none;font:inherit;font-size:20px;font-weight:700;color:var(--ink);padding:0;-moz-appearance:textfield}
+.stepper input::-webkit-inner-spin-button{-webkit-appearance:none}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;padding:4px 0}
+.switch input{appearance:none;-webkit-appearance:none;width:50px;height:30px;border-radius:999px;background:var(--line);position:relative;cursor:pointer;flex:none;margin:0;transition:background .2s}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:left .2s}
+.switch input:checked{background:var(--accent)}
+.switch input:checked::after{left:23px}
+
+.err{color:var(--bad);font-weight:700;margin:4px 0 0}
+.go{width:100%;margin-top:6px;padding:16px;border:0;border-radius:12px;background:var(--accent);color:var(--accent-ink);font-size:18px;font-weight:700;cursor:pointer}
+
+/* resultaten */
+.results{display:grid;gap:12px}
+.results h2.big{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:48px;line-height:1;margin:6px 0 0;color:var(--accent);white-space:nowrap;overflow:hidden}
+.summary{color:var(--muted);font-size:15px}
+.summary strong{color:var(--ink)}
+.top3{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.deal{display:grid;text-decoration:none;color:inherit;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.deal:hover{border-color:var(--accent)}
+.top3 li:first-child .deal{border:2px solid var(--signal)}
+.deal .main{display:grid;grid-template-columns:1fr auto;gap:6px 12px;padding:14px 16px 12px}
+.deal .who{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--soft);color:var(--muted)}
+.badge.first{background:var(--signal);color:var(--signal-ink)}
+.badge.ok{background:var(--good-soft);color:var(--good)}
+.deal .air{font-weight:700;font-size:17px}
+.deal .amt{grid-row:1;grid-column:2;text-align:right;align-self:start}
+.deal .amt b{display:block;font-family:var(--f-display);font-weight:800;font-size:38px;line-height:1;font-variant-numeric:tabular-nums}
+.deal .amt small{font-size:12px;color:var(--muted)}
+.deal .amt .from{display:block;font-size:13px;font-weight:700;color:var(--muted);line-height:1.2}
+.deal .fresh{grid-column:1 / -1;margin:2px 0 0;font-size:13px;color:var(--muted)}
+.deal .route{grid-column:1 / -1;display:grid;gap:10px;font-size:15px;margin-top:4px}
+.deal .route .leg{display:grid;gap:2px}
+.deal .route .t{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.deal .route .time{font-weight:700;font-variant-numeric:tabular-nums}
+.deal .route .way{color:var(--muted)}
+.deal .cta{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;background:var(--accent);color:var(--accent-ink);font-weight:700}
+.top3 li{display:grid;gap:6px}
+.more{border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+.more summary{list-style:none;cursor:pointer;padding:12px 16px;font-weight:700;font-size:17px;color:var(--ink);display:flex;justify-content:center;align-items:center;gap:8px}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"▾";color:var(--muted)}
+.more[open] summary::after{content:"▴"}
+.more ul{list-style:none;margin:0;padding:0 8px 6px;display:grid}
+.more li a small{display:block;font-weight:400;font-size:13px;color:var(--muted)}
+.more li a{display:block;padding:12px 8px;border-top:1px solid var(--line);text-decoration:none;color:var(--accent);font-weight:700;font-size:16px;text-align:center}
+
+.top3 .sky{display:block;text-align:center;padding:11px 16px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--ink);font-weight:700;font-size:17px;text-decoration:none}
+.top3 .sky:hover{border-color:var(--accent)}
+.top3 .sky b{color:var(--accent)}
+.top3 .alt{justify-self:center;font-size:14px;color:var(--muted);text-decoration:underline;text-underline-offset:2px;padding:4px}
+.top3 li:not(:first-child) .deal .cta{background:var(--accent-soft);color:var(--accent)}
+.empty{display:grid;gap:12px;justify-items:start}
+.empty p{margin:0}
+.empty button{font-weight:700;padding:12px 16px;border-radius:10px;border:0;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.note{margin:0;font-size:14px;color:var(--muted)}
+.loading{display:grid;gap:12px}
+.loading div{height:118px;border-radius:var(--r);background:linear-gradient(90deg,var(--paper),var(--soft),var(--paper));background-size:200% 100%;animation:sh 1.2s infinite linear;border:1px solid var(--line)}
+@keyframes sh{to{background-position:-200% 0}}
+@media (prefers-reduced-motion:reduce){.loading div{animation:none}*{transition:none!important}}
+
+/* inklapbare extra's */
+details.card{padding:0}
+details summary{list-style:none;cursor:pointer;padding:16px;display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";margin-left:auto;font-size:22px;color:var(--accent);line-height:1}
+details[open] summary::after{content:"−"}
+details .inner{padding:0 16px 16px;display:grid;gap:12px}
+details .inner p{margin:0;max-width:65ch}
+.airs{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.airs li{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--soft);border:1px solid var(--line)}
+.airs .an{font-weight:700}
+.airs .fp{font-size:14px;color:var(--muted)}
+.airs .go2{margin-left:auto;display:flex;gap:6px}
+.airs a{font-size:14px;font-weight:700;text-decoration:none;padding:7px 12px;border-radius:8px;background:var(--accent);color:var(--accent-ink)}
+.airs a.ghost{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
+.tips{margin:0;padding-left:20px;display:grid;gap:8px}
+footer{color:var(--muted);font-size:13px;text-align:center;display:grid;gap:8px}
+footer p{margin:0}
+footer a{color:var(--accent)}
+footer .made{font-size:15px;font-weight:700;color:var(--ink)}
+footer .made a{color:var(--accent);text-decoration:none}
+
+dialog{border:1px solid var(--line);border-radius:var(--r);background:var(--paper);color:var(--ink);max-width:min(480px,calc(100vw - 32px));padding:20px}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog h3{margin:0 0 8px;font-size:22px}
+dialog ol{padding-left:20px}
+.btns{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+@media (max-width:380px){.dates{grid-template-columns:1fr}}
+
+/* computer: twee kolommen, zoekformulier links (blijft staan), resultaten rechts */
+@media (min-width:960px){
+  .wrap{max-width:1180px;grid-template-columns:420px minmax(0,1fr);column-gap:40px;row-gap:22px;padding-block:28px 64px}
+  .brand,.hero{grid-column:1 / -1}
+  .hero{padding-bottom:6px;border-bottom:1px solid var(--line)}
+  form.card{grid-column:1;grid-row:3 / span 4;align-self:start;position:sticky;top:20px;box-shadow:0 10px 30px rgba(19,35,58,.08)}
+  #cheap,#air,details.card,footer{grid-column:2}
+  #cheap{align-content:start}
+  footer{text-align:left}
+  .deal .main{padding:18px 22px 14px;grid-template-columns:1fr auto;column-gap:24px}
+  .deal .route{grid-template-columns:1fr 1fr;gap:16px}
+  .deal .cta{padding:14px 22px}
+  .deal .amt b{font-size:44px}
+  .top3{gap:16px}
+}
+@media (min-width:960px) and (max-height:820px){form.card{position:static}}
+.sister{display:grid;gap:4px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--paper);text-decoration:none;color:var(--ink)}
+.sister b{font-size:17px}.sister span{color:var(--accent);font-weight:700;font-size:15px}
+.sister:hover{border-color:var(--accent)}
+footer .apps{font-size:14px}
+@media (min-width:960px){.sister{grid-column:2}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="brand">
+  <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></span>
+  <b>Vlucht<span>wijzer</span></b>
+</header>
+
+<div class="hero">
+  <h1>Vind de goedkoopste vlucht</h1>
+</div>
+
+<form class="card" id="f" novalidate autocomplete="off">
+  <div class="step">
+    <span class="num" aria-hidden="true">1</span>
+    <h2 id="fromLbl">Waar vertrek je?</h2>
+    <div class="body">
+      <div class="ms" id="ms">
+        <button type="button" class="field ms-btn" id="msBtn" aria-haspopup="true" aria-expanded="false" aria-controls="msPanel" aria-labelledby="fromLbl msBtn"></button>
+        <div class="ms-panel" id="msPanel" hidden>
+          <div class="ac">
+            <label for="fromQ" class="sr">Zoek een ander vliegveld</label>
+            <input class="field" id="fromQ" placeholder="Ander vliegveld zoeken, bijv. Bremen" role="combobox" aria-expanded="false" aria-controls="fromSug" aria-autocomplete="list">
+            <ul class="sug" id="fromSug" role="listbox" hidden></ul>
+          </div>
+          <div id="msList"></div>
+          <div class="ms-foot"><button type="button" id="msClear">Wis alles</button><button type="button" class="primary" id="msDone">Klaar</button></div>
+        </div>
+      </div>
+      <p class="hint">Kies er meerdere: Weeze of Charleroi is vaak goedkoper dan Schiphol.</p>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="num" aria-hidden="true">2</span>
+    <h2><label for="toQ">Waar wil je heen?</label></h2>
+    <div class="body ac">
+      <input class="field" id="toQ" placeholder="Typ een stad of land, bijv. Kreta" role="combobox" aria-expanded="false" aria-controls="toSug" aria-autocomplete="list">
+      <ul class="sug" id="toSug" role="listbox" hidden></ul>
+      <div class="field dest" id="toPick" hidden></div>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="num" aria-hidden="true">3</span>
+    <h2>Wanneer?</h2>
+    <div class="body">
+      <div class="seg" role="group" aria-label="Soort reis">
+        <button type="button" id="rt" aria-pressed="true">Retour</button>
+        <button type="button" id="ow" aria-pressed="false">Enkele reis</button>
+      </div>
+      <div class="dates">
+        <label for="d1"><span class="lbl">Heen</span><input class="field" id="d1" type="date"></label>
+        <label for="d2" id="d2wrap"><span class="lbl">Terug</span><input class="field" id="d2" type="date"></label>
+      </div>
+      <div>
+        <span class="lbl" id="flexLbl">Hoe flexibel ben je?</span>
+        <div class="seg" role="group" aria-labelledby="flexLbl" id="flex" style="margin-top:4px">
+          <button type="button" data-f="0" aria-pressed="true">Precies deze dag</button>
+          <button type="button" data-f="1" aria-pressed="false">± 1 dag</button>
+          <button type="button" data-f="2" aria-pressed="false">± 2 dagen</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="step">
+    <span class="num" aria-hidden="true">4</span>
+    <h2>Met hoeveel en hoe?</h2>
+    <div class="body">
+      <div class="pax">
+        <label for="pax" style="display:block">Volwassenen</label>
+        <div class="stepper">
+          <button type="button" id="paxMin" aria-label="Eén persoon minder">−</button>
+          <input id="pax" type="number" min="1" max="9" value="2" readonly>
+          <button type="button" id="paxPlus" aria-label="Eén persoon meer">+</button>
+        </div>
+      </div>
+      <label class="switch" for="direct"><span>Alleen directe vluchten<br><span class="hint">Geen overstappen</span></span><input type="checkbox" id="direct" role="switch"></label>
+    </div>
+  </div>
+
+  <p class="err" id="err" role="alert" hidden></p>
+  <button class="go" type="submit">Zoek de goedkoopste vluchten</button>
+</form>
+
+<section class="results" id="cheap" aria-live="polite">
+  <h2 class="big">De goedkoopste vluchten!</h2>
+  <div class="summary" id="sum"></div>
+  <div id="cheapBody"></div>
+</section>
+
+<a class="sister" href="https://vakantietoppers.netlify.app/"><b>Ook een hotel of vakantie nodig?</b><span>Zoek in Vakantiewijzer tegelijk op Booking.com, Zoover, TUI en meer →</span></a>
+
+<details class="card" id="air">
+  <summary>Liever direct bij de maatschappij?</summary>
+  <div class="inner">
+    <p class="note" id="airSub"></p>
+    <div id="airBody"></div>
+  </div>
+</details>
+
+<details class="card">
+  <summary>Hoe werkt Vluchtwijzer?</summary>
+  <div class="inner">
+    <p>Vluchtwijzer zoekt goedkope vliegtickets vanaf meerdere vliegvelden tegelijk: Schiphol, Eindhoven, Rotterdam, Groningen en Maastricht, maar ook net over de grens in Weeze, Düsseldorf, Keulen, Brussel en Charleroi. Je typt gewoon een plaatsnaam, zoals Tenerife, Barcelona of Kreta.</p>
+    <p>De app laat de goedkoopste vluchten zien, retour of enkele reis, desgewenst alleen directe vluchten en met een of twee dagen speling. Met één tik open je die vlucht bij Momondo, of vergelijk je bij Skyscanner, Kayak, Expedia en Opodo. Vluchtwijzer is gratis en werkt op je telefoon en computer.</p>
+    <p>Meer weten? Lees de <a href="gids/">reisgids</a>, bijvoorbeeld over <a href='/gids/vliegen-vanaf-weeze'>vliegen vanaf Weeze</a> of <a href='/gids/eindhoven-airport-dicht-2027'>Eindhoven Airport dicht in 2027</a>.</p>
+  </div>
+</details>
+
+<details class="card">
+  <summary>Tips om goedkoper te vliegen</summary>
+  <div class="inner">
+    <ul class="tips">
+      <li>Kies meerdere vertrekvliegvelden. Weeze, Düsseldorf, Brussel of Charleroi is vaak goedkoper dan Schiphol.</li>
+      <li>Ben je flexibel? Kies ± 2 dagen. Een dag eerder of later scheelt vaak tientallen euro's.</li>
+      <li>Tel bagage mee: de prijzen zijn zonder koffer.</li>
+      <li>Boek bij voorkeur 4 tot 11 weken van tevoren.</li>
+    </ul>
+  </div>
+</details>
+
+<footer>
+  <p>Prijzen per persoon, zonder bagage. Eerder gevonden prijzen; de actuele prijs zie je bij het boeken. Bron: Travelpayouts.</p>
+  <p><a href="gids/">Reisgids: vliegvelden vergeleken, populaire bestemmingen en tips voor goedkope vliegtickets</a></p>
+  <p class="apps">Meer apps van Erik: <a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a> (vakanties vergelijken) · <a href="https://goedkopertanken.netlify.app/">Tankwijzer</a> (goedkoop tanken in Nederland, België en Duitsland) · <a href="https://euroroadrules.eu/nl/">EuroRoadRules</a> (tol, vignetten en verkeersregels in Europa) · <a href="https://boodschappenvergelijk.nl/">Boodschappenvergelijk.nl</a> (goedkoopste supermarkt) · <a href="https://foutcodezoeker.nl/">Foutcodezoeker</a> (storingen zelf oplossen)</p>
+<p class="made">Made by <a href="mailto:erik@beltman.email">Erik</a></p>
+</footer>
+</div>
+
+
+
+<script src="airports.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const AP=window.AIRPORTS.map(([c,n,k,l,t])=>({c,n,k:norm(n+" "+k+" "+l+" "+c),l,city:t==="c"}));
+const BY={}; AP.forEach(a=>BY[a.c]=a);
+const NEAR=["AMS","EIN","RTM","GRQ","MST","BRU","CRL","ANR","LGG","OST","DUS","NRN","CGN","DTM","FMO","BRE"];
+const AIRLINES={KL:"KLM",HV:"Transavia",FR:"Ryanair",U2:"easyJet",EC:"easyJet",VY:"Vueling",IB:"Iberia",LH:"Lufthansa",EW:"Eurowings",SN:"Brussels Airlines",BA:"British Airways",AF:"Air France",TP:"TAP Portugal",AZ:"ITA Airways",A3:"Aegean",TK:"Turkish Airlines",PC:"Pegasus",XQ:"SunExpress",LX:"Swiss",OS:"Austrian",SK:"SAS",W6:"Wizz Air",W4:"Wizz Air",DY:"Norwegian",D8:"Norwegian",TB:"TUI fly",OR:"TUI",X3:"TUI fly",DE:"Condor",EK:"Emirates",QR:"Qatar Airways",EY:"Etihad",DL:"Delta",UA:"United",AA:"American",LS:"Jet2",EI:"Aer Lingus",FI:"Icelandair",LO:"LOT",OK:"Czech Airlines",UX:"Air Europa",V7:"Volotea",CD:"Corendon",XC:"Corendon",SV:"Saudia",MS:"EgyptAir",AT:"Royal Air Maroc",KQ:"Kenya Airways",SQ:"Singapore Airlines",CX:"Cathay Pacific"};
+
+function norm(s){return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"")}
+function store(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+function load(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}}
+const iso=d=>d.toISOString().slice(0,10);
+const ymd=d=>d.slice(2).replace(/-/g,"");
+const nl=d=>new Date(d.length>10?d:d+"T12:00").toLocaleDateString("nl-NL",{weekday:"short",day:"numeric",month:"short"});
+const tm=d=>{const t=(d||"").slice(11,16);return /^\d\d:\d\d$/.test(t)&&t!=="00:00"?" · "+t:""};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+let origins=["AMS","EIN","NRN"], dest="BCN", oneWay=false;
+
+/* ---------- plaatsnaam zoeken ---------- */
+function search(q,exclude=[]){
+  q=norm(q.trim()); if(q.length<2) return [];
+  const up=q.toUpperCase();
+  return AP.filter(a=>!exclude.includes(a.c)).map(a=>{
+    let s=-1;
+    if(a.c===up) s=0;
+    else if(norm(a.n).startsWith(q)) s=1;
+    else if(a.k.split(" ").some(w=>w.startsWith(q))) s=2;
+    else if(a.k.includes(q)) s=3;
+    return {a,s:a.city&&s>0?s-.5:s};
+  }).filter(x=>x.s>=0).sort((x,y)=>x.s-y.s).slice(0,8).map(x=>x.a);
+}
+function autocomplete(inp,list,onPick,exclude){
+  let items=[],sel=-1;
+  const close=()=>{list.hidden=true;inp.setAttribute("aria-expanded","false");sel=-1};
+  const draw=()=>{
+    if(!items.length){
+      list.innerHTML=inp.value.trim().length>=2?`<li aria-disabled="true">Geen vliegveld gevonden. Typ de 3-letterige code als je die weet.</li>`:"";
+      list.hidden=!list.innerHTML; inp.setAttribute("aria-expanded",String(!list.hidden));
+      if(/^[a-z]{3}$/i.test(inp.value.trim())){items=[{c:inp.value.trim().toUpperCase(),n:"Code "+inp.value.trim().toUpperCase(),l:""}];draw();}
+      return;
+    }
+    list.innerHTML=items.map((a,i)=>`<li role="option" id="${list.id}-${i}" aria-selected="${i===sel}" data-i="${i}"><span class="code">${a.c}</span><span>${esc(a.n)}</span><small>${esc(a.l)}</small></li>`).join("");
+    list.hidden=false; inp.setAttribute("aria-expanded","true");
+  };
+  inp.addEventListener("input",()=>{items=search(inp.value,exclude());sel=items.length?0:-1;draw()});
+  inp.addEventListener("keydown",e=>{
+    if(list.hidden) return;
+    if(e.key==="ArrowDown"){sel=Math.min(items.length-1,sel+1);draw();e.preventDefault()}
+    else if(e.key==="ArrowUp"){sel=Math.max(0,sel-1);draw();e.preventDefault()}
+    else if(e.key==="Enter"&&sel>=0){e.preventDefault();pick(items[sel])}
+    else if(e.key==="Escape"){close()}
+  });
+  list.addEventListener("mousedown",e=>{const li=e.target.closest("li[data-i]");if(li){e.preventDefault();pick(items[+li.dataset.i])}});
+  inp.addEventListener("blur",()=>setTimeout(close,150));
+  function pick(a){onPick(a);inp.value="";items=[];close()}
+}
+
+/* ---------- vertrek: meerkeuzemenu ---------- */
+function drawOrigins(){
+  const btn=$("msBtn");
+  btn.innerHTML=origins.length
+    ? `<span class="codes">${origins.map(c=>((BY[c]||{n:c}).n).replace(/ (Schiphol|Zaventem|Eelde|Aachen|The Hague)$/,"").replace(/ \(.+\)$/,"")).join(", ")}</span><span class="cnt">${origins.length}</span>`
+    : `<span class="codes" style="color:var(--muted)">Kies vliegvelden</span>`;
+  const extra=origins.filter(c=>!NEAR.includes(c));
+  const groups={};
+  [...NEAR,...extra].forEach(c=>{const a=BY[c]||{n:c,l:"Overig"};const g=NEAR.includes(c)?a.l:"Zelf toegevoegd";(groups[g]=groups[g]||[]).push(a.c||c)});
+  $("msList").innerHTML=Object.entries(groups).map(([g,cs])=>`<div class="grp" role="group" aria-label="${esc(g)}"><h4>${esc(g)}</h4>${cs.map(c=>{
+    const a=BY[c]||{n:c};
+    return `<label class="opt"><input type="checkbox" value="${c}" ${origins.includes(c)?"checked":""}><span class="code">${c}</span><span>${esc(a.n)}</span></label>`;
+  }).join("")}</div>`).join("");
+}
+function msOpen(v){$("msPanel").hidden=!v;$("msBtn").setAttribute("aria-expanded",String(v));if(!v)$("fromQ").value=""}
+$("msBtn").onclick=()=>msOpen($("msPanel").hidden);
+$("msDone").onclick=()=>{msOpen(false);$("msBtn").focus()};
+$("msClear").onclick=()=>{origins=[];drawOrigins()};
+$("msList").addEventListener("change",e=>{
+  const c=e.target.value; if(!c) return;
+  origins=e.target.checked?[...origins.filter(x=>x!==c),c]:origins.filter(x=>x!==c);
+  const scroll=$("msList").scrollTop; drawOrigins(); $("msList").scrollTop=scroll;
+});
+document.addEventListener("click",e=>{if(!$("ms").contains(e.target))msOpen(false)});
+$("ms").addEventListener("keydown",e=>{if(e.key==="Escape"&&$("fromSug").hidden){msOpen(false);$("msBtn").focus()}});
+autocomplete($("fromQ"),$("fromSug"),a=>{if(!BY[a.c])BY[a.c]=a;if(!origins.includes(a.c))origins.push(a.c);drawOrigins()},()=>origins);
+
+/* ---------- bestemming ---------- */
+function drawDest(){
+  const box=$("toPick");
+  if(!dest){box.hidden=true;$("toQ").hidden=false;return}
+  const a=BY[dest]||{n:dest,l:""};
+  box.innerHTML=`<span class="city"><b>${esc(a.n)}</b><span>${esc(a.l)} · <span class="code">${dest}</span></span></span><button type="button" id="chg">Wijzig</button>`;
+  box.hidden=false;$("toQ").hidden=true;
+  $("chg").onclick=()=>{dest="";drawDest();$("toQ").focus()};
+}
+autocomplete($("toQ"),$("toSug"),a=>{dest=a.c;if(!BY[a.c])BY[a.c]=a;drawDest()},()=>[]);
+
+/* ---------- reistype ---------- */
+function setOW(v){oneWay=v;$("rt").setAttribute("aria-pressed",String(!v));$("ow").setAttribute("aria-pressed",String(v));$("d2wrap").hidden=v}
+$("rt").onclick=()=>setOW(false);
+$("ow").onclick=()=>setOW(true);
+
+/* ---------- sites ---------- */
+const SITES=[
+ {name:"Momondo",rank:"#1",tag:"Testwinnaar",best:true,multi:true,
+  why:"Vaakst de laagste prijs, beste filters en rekent bagagekosten mee.",
+  watch:"Iets trager dan Google Flights.",
+  url:(o,s)=>`https://www.momondo.nl/flight-search/${o}-${s.t}/${s.d1}${s.ow?"":"/"+s.d2}/${s.p}adults?sort=price_a${s.dir?"&fs=stops%3D0":""}`},
+ {name:"Skyscanner",rank:"#2",tag:"Vergelijker",
+  why:"Sterk bij ruim vooruit boeken, prijskalender en sterrenscore per boekingssite.",
+  watch:"Weinig info over overstaptijden in de eerste lijst.",
+  url:(o,s)=>`https://www.skyscanner.nl/transport/vluchten/${o.toLowerCase()}/${s.t.toLowerCase()}/${ymd(s.d1)}/${s.ow?"":ymd(s.d2)+"/"}?adultsv2=${s.p}&cabinclass=economy&rtn=${s.ow?0:1}${s.dir?"&stops=!oneStop,!twoPlusStops":""}`},
+ {name:"Skiplagged",rank:"#3",tag:"Vergelijker",nodir:true,
+  why:"Erg goed in last-minute vluchten.",
+  watch:"Rekent 2,3% servicekosten; vink hidden-city-tickets uit.",
+  url:(o,s)=>`https://skiplagged.com/flights/${o}/${s.t}/${s.d1}${s.ow?"":"/"+s.d2}?adults=${s.p}`},
+ {name:"Google Flights",rank:"#4",tag:"Vergelijker",
+  why:"Supersnel, prijsgrafiek per dag en een prijsalert.",
+  watch:"Mist soms prijsvechters als Ryanair.",
+  url:(o,s)=>"https://www.google.com/travel/flights?hl=nl&curr=EUR&q="+encodeURIComponent(`${s.dir?"Nonstop f":"F"}lights from ${o} to ${s.t} on ${s.d1}${s.ow?" one way":" through "+s.d2} for ${s.p} adults`)},
+ {name:"Kayak",rank:"#1",tag:"Vergelijker",multi:true,
+  why:"Zelfde zoekmachine als Momondo; handig als tweede blik.",
+  watch:"Resultaten lijken sterk op Momondo.",
+  url:(o,s)=>`https://www.kayak.nl/flights/${o}-${s.t}/${s.d1}${s.ow?"":"/"+s.d2}/${s.p}adults?sort=price_a${s.dir?"&fs=stops%3D0":""}`},
+ {name:"Kiwi.com",rank:"NL",tag:"Boekingssite",nodir:true,
+  why:"Combineert slim losse budgetmaatschappijen tot goedkope routes.",
+  watch:"Bij zelf-overstappen draag je zelf het risico. Toont geen easyJet.",
+  url:(o,s)=>`https://www.kiwi.com/deep?from=${o}&to=${s.t}&departure=${s.d1}&return=${s.ow?"no-return":s.d2}&adults=${s.p}&lang=nl&currency=EUR`},
+ {name:"Tix.nl",rank:"NL",tag:"Let op: kosten",warn:true,home:true,
+  why:"Nederlandse boekingssite, makkelijk te gebruiken en goed beoordeeld op Trustpilot.",
+  watch:"Consumentenbond: verborgen boekingskosten tot €63 p.p. Vul je reis op de site zelf in.",
+  url:()=>"https://www.tix.nl/"},
+ {name:"CheapTickets",rank:"NL",tag:"Let op: kosten",warn:true,home:true,
+  why:"Bekende Nederlandse boekingssite met veel combinaties.",
+  watch:"Consumentenbond: verborgen boekingskosten en geen KLM of Ryanair. Vul je reis op de site zelf in.",
+  url:()=>"https://www.cheaptickets.nl/"},
+ {name:"Booking.com",rank:"#8",tag:"Boekingssite",
+  why:"Handig als je hotel er ook al staat.",
+  watch:"Vond in de test nooit de allerlaagste prijs en toont geen Ryanair.",
+  url:(o,s)=>`https://flights.booking.com/flights/${o}.AIRPORT-${s.t}.AIRPORT/?type=${s.ow?"ONEWAY":"ROUNDTRIP"}&adults=${s.p}&cabinClass=ECONOMY&depart=${s.d1}${s.ow?"":"&return="+s.d2}&locale=nl${s.dir?"&stops=0":""}`}
+];
+
+$("paxMin").onclick=()=>{$("pax").value=Math.max(1,+$("pax").value-1)};
+$("paxPlus").onclick=()=>{$("pax").value=Math.min(9,+$("pax").value+1)};
+let flex=0;
+function setFlex(v){flex=v;document.querySelectorAll("#flex button").forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.f===v)))}
+$("flex").addEventListener("click",e=>{const b=e.target.closest("button[data-f]");if(b)setFlex(+b.dataset.f)});
+function read(){return {o:[...origins],t:dest,d1:$("d1").value,d2:$("d2").value,p:+$("pax").value,ow:oneWay,dir:$("direct").checked,flex}}
+function check(s){
+  if(!s.o.length) return "Kies minstens één vertrekvliegveld.";
+  if(!s.t) return "Kies een bestemming uit de lijst.";
+  if(s.o.length===1&&s.o[0]===s.t) return "Vertrek en bestemming zijn hetzelfde.";
+  if(!s.d1) return "Kies een vertrekdatum.";
+  if(!s.ow&&(!s.d2||s.d2<s.d1)) return "Kies een terugdatum die na de heendatum ligt.";
+  return "";
+}
+
+function drawSites(s){
+  if(!$("list")) return;
+  $("list").innerHTML=SITES.map(x=>{
+    let links;
+    if(x.home) links=`<a href="${x.url()}" target="_blank" rel="noopener">Open ${x.name} ↗</a>`;
+    else if(x.multi||s.o.length===1) links=`<a href="${x.url(s.o.join(","),s)}" target="_blank" rel="noopener">Open ${x.name.split(" ")[0]} ↗</a>`;
+    else links=s.o.map(o=>`<a class="small" href="${x.url(o,s)}" target="_blank" rel="noopener">${o} ↗</a>`).join("");
+    return `<li class="pass"><div class="body">
+      <div class="top"><span class="rank">${x.rank}</span><span class="name">${x.name}</span><span class="tag${x.best?" best":""}${x.warn?" warn":""}">${x.tag}</span></div>
+      <p class="why">${x.why}</p><p class="watch">Let op: ${x.watch}</p>${s.dir&&(x.nodir||x.home)?`<p class="watch"><b>Directe vluchten:</b> zet op deze site zelf het filter "direct" of "0 overstappen" aan.</p>`:""}</div>
+      <div class="stub">${links}</div></li>`;
+  }).join("");
+}
+
+/* ---------- maatschappijen ---------- */
+// Alleen hoofddomeinen: die sturen altijd door naar de juiste taal en geven geen foutmelding.
+const AIRHOME={FR:"https://www.ryanair.com/",U2:"https://www.easyjet.com/",W6:"https://wizzair.com/",W4:"https://wizzair.com/",HV:"https://www.transavia.com/",VY:"https://www.vueling.com/",KL:"https://www.klm.nl/",CD:"https://www.corendon.nl/",XC:"https://www.corendon.nl/",OR:"https://www.tui.nl/",TB:"https://www.tuifly.be/",X3:"https://www.tuifly.com/",EW:"https://www.eurowings.com/",SN:"https://www.brusselsairlines.com/",LH:"https://www.lufthansa.com/",PC:"https://www.flypgs.com/",XQ:"https://www.sunexpress.com/",TK:"https://www.turkishairlines.com/",DE:"https://www.condor.com/",TP:"https://www.flytap.com/",IB:"https://www.iberia.com/",AF:"https://www.airfrance.nl/",BA:"https://www.britishairways.com/",LX:"https://www.swiss.com/",OS:"https://www.austrian.com/",A3:"https://www.aegeanair.com/",V7:"https://www.volotea.com/",DY:"https://www.norwegian.com/",D8:"https://www.norwegian.com/",EK:"https://www.emirates.com/",QR:"https://www.qatarairways.com/",EY:"https://www.etihad.com/",EI:"https://www.aerlingus.com/",FI:"https://www.icelandair.com/",LS:"https://www.jet2.com/",AT:"https://www.royalairmaroc.com/",UX:"https://www.aireuropa.com/",LO:"https://www.lot.com/",MS:"https://www.egyptair.com/",SQ:"https://www.singaporeair.com/",CX:"https://www.cathaypacific.com/",DL:"https://www.delta.com/",UA:"https://www.united.com/",AA:"https://www.aa.com/",KQ:"https://www.kenya-airways.com/",SV:"https://www.saudia.com/"};
+// Google Flights met de maatschappij in de zoekvraag: opent altijd, met je reis al ingevuld.
+const gfAir=(code,o,s)=>"https://www.google.com/travel/flights?hl=nl&curr=EUR&q="+encodeURIComponent(`${s.dir?"Nonstop ":""}${AIRLINES[code]||code} flights from ${o} to ${s.t} on ${s.d1}${s.ow?" one way":" through "+s.d2} for ${s.p} adults`);
+// maatschappijen die vaak vanaf deze vliegvelden vliegen (vuistregel als er nog geen prijsdata is)
+const BASES={AMS:["KL","HV","U2","VY","CD","OR"],EIN:["HV","FR","W6","OR","CD"],RTM:["HV","OR"],GRQ:["HV","OR"],MST:["CD","FR"],BRU:["SN","FR","TB","VY"],CRL:["FR","W6","TB"],ANR:["TB"],LGG:["TB"],OST:["TB"],DUS:["EW","LH","X3","DE","PC","XQ"],NRN:["FR"],CGN:["EW","FR","PC","XQ","W6"],DTM:["W6","EW","FR"],FMO:["EW","XQ"],BRE:["FR","EW"]};
+let airFound=null; // {code:{from:Set,price}}
+
+function airLink(code){return AIRHOME[code]?{lvl:"home",url:AIRHOME[code]}:null}
+function drawAir(s){
+  const body=$("airBody"); let rows=[];
+  if(airFound&&Object.keys(airFound).length){
+    $("airSub").textContent="Maatschappijen die deze route vliegen, goedkoopste eerst. Direct boeken scheelt vaak boekingskosten.";
+    rows=Object.entries(airFound).sort((a,b)=>a[1].price-b[1].price).map(([c,v])=>({c,from:[...v.from],price:v.price}));
+  }else{
+    $("airSub").textContent="Maatschappijen die vaak vanaf jouw vertrekvliegvelden vliegen. Of ze jouw bestemming vliegen, zie je op hun site.";
+    const m={}; s.o.forEach(o=>(BASES[o]||[]).forEach(c=>{(m[c]=m[c]||[]).push(o)}));
+    rows=Object.entries(m).map(([c,from])=>({c,from}));
+  }
+  rows=rows.filter(r=>AIRHOME[r.c]);
+  if(!rows.length){body.innerHTML=`<p class="note">Geen maatschappijen gevonden. Gebruik de vergelijkingssites hieronder.</p>`;return}
+  const trip=`${s.o.join(" / ")} → ${s.t}, ${nl(s.d1)}${s.ow?" enkele reis":" – "+nl(s.d2)}, ${s.p} volw.`;
+  body.innerHTML=`<p class="note">Op de site van de maatschappij vul je zelf in: <b>${esc(trip)}</b> Via Google zie je hun vluchten met je reis al ingevuld.</p>
+  <ul class="airs">${rows.map(r=>`<li><span class="an">${esc(AIRLINES[r.c]||r.c)}</span>${r.price?`<span class="fp">vanaf €${Math.round(r.price)}</span>`:""}
+    <span class="go2"><a href="${AIRHOME[r.c]}" target="_blank" rel="noopener">Site ↗</a><a class="ghost" href="${gfAir(r.c,r.from[0],s)}" target="_blank" rel="noopener">Via Google ↗</a></span></li>`).join("")}</ul>`;
+}
+
+
+
+/* uitklapmenu "Misschien hier nóg goedkoper?": alleen sites met een betrouwbare link */
+function moreSites(d,s,dep,ret,nonstop){
+  const o=d.origin_airport||d.from, t=d.destination_airport||s.t;
+  const fs=["airlines="+d.airline].concat(nonstop?["stops=0"]:[]).join(";");
+  const sk=SITES.find(x=>x.name==="Skyscanner");
+  const sites=[
+    {n:"Skyscanner",u:sk?sk.url(o,{...s,t,d1:dep,d2:ret||s.d2,ow:!ret,dir:nonstop}):""},
+    {n:"Kayak",u:`https://www.kayak.nl/flights/${o}-${t}/${dep}${ret?"/"+ret:""}/${s.p}adults?sort=price_a&fs=${encodeURIComponent(fs)}`},
+    {n:"Expedia",u:`https://www.expedia.nl/go/flight/search/${ret?"Roundtrip":"OneWay"}/${dep}/${ret||dep}?load=1&FromAirport=${o}&ToAirport=${t}&NumAdult=${s.p}`},
+    {n:"Opodo",u:`https://www.opodo.nl/travel/#results/type=${ret?"R":"O"};dep=${dep};from=${o};to=${t}${ret?";ret="+ret:""};adults=${s.p}`}
+  ].filter(x=>x.u);
+  return `<details class="more"><summary>Misschien hier nóg goedkoper?</summary><ul>${sites.map(x=>`<li><a href="${x.u}" target="_blank" rel="noopener">${x.n}${x.note?`<small>${esc(x.note)}</small>`:""}</a></li>`).join("")}</ul></details>`;
+}
+/* ---------- goedkoopste 3 via Travelpayouts ---------- */
+const API = "/api/tp";
+async function fetchPrices(o,s,dep,ret){
+  const q=new URLSearchParams({origin:o,destination:s.t,departure_at:dep,currency:"eur",market:"nl",sorting:"price",limit:"100",one_way:String(s.ow),direct:String(!!s.dir)});
+  if(!s.ow&&ret) q.set("return_at",ret);
+  const r=await fetch(`${API}/aviasales/v3/prices_for_dates?${q}`);
+  if(r.status===401||r.status===403) throw new Error("token");
+  if(!r.ok) throw new Error("http");
+  const j=await r.json();
+  return (j.data||[]).map(d=>({...d,from:o}));
+}
+function shift(d,n){const x=new Date(d+"T12:00:00Z");x.setUTCDate(x.getUTCDate()+n);return x.toISOString().slice(0,10)}
+function windowOf(d,f){const out=[];for(let n=-f;n<=f;n++)out.push(shift(d,n));return out}
+async function gather(s,jobs){
+  const res=await Promise.allSettled(jobs.map(([o,dep,ret])=>fetchPrices(o,s,dep,ret)));
+  const bad=res.find(r=>r.status==="rejected"&&r.reason&&r.reason.message==="token");
+  if(bad) throw bad.reason;
+  return res.flatMap(r=>r.status==="fulfilled"?r.value:[]);
+}
+async function cheapest(s){
+  const body=$("cheapBody");
+  body.innerHTML=`<div class="loading" aria-label="Prijzen ophalen"><div></div><div></div><div></div></div>`;
+  try{
+    const today=iso(new Date());
+    const depWin=windowOf(s.d1,s.flex||0).filter(d=>d>=today), retWin=s.ow?[]:windowOf(s.d2,s.flex||0);
+    let all, exact=true;
+    if(!s.flex){
+      all=await gather(s,s.o.map(o=>[o,s.d1,s.d2]));
+    }else{
+      const dm=[...new Set(depWin.map(d=>d.slice(0,7)))], rm=s.ow?[null]:[...new Set(retWin.map(d=>d.slice(0,7)))];
+      const jobs=[]; s.o.forEach(o=>dm.forEach(m=>rm.forEach(r=>jobs.push([o,m,r]))));
+      const raw=await gather(s,jobs);
+      all=raw.filter(d=>depWin.includes((d.departure_at||"").slice(0,10))&&(s.ow||retWin.includes((d.return_at||"").slice(0,10))));
+      if(!all.length){exact=false;all=raw}
+    }
+    if(!all.length){
+      exact=false;
+      all=await gather(s,s.o.map(o=>[o,s.d1.slice(0,7),s.ow?null:s.d2.slice(0,7)]));
+    }
+    all.sort((a,b)=>a.price-b.price);
+    airFound={};
+    all.forEach(d=>{const v=airFound[d.airline]=airFound[d.airline]||{from:new Set(),price:d.price};v.from.add(d.origin_airport||d.from);v.price=Math.min(v.price,d.price)});
+    drawAir(s);
+    const seen=new Set(), top=[];
+    for(const d of all){const k=(d.origin_airport||d.from)+(d.destination_airport||"")+d.airline+d.departure_at+(d.return_at||"");if(!seen.has(k)){seen.add(k);top.push(d)}if(top.length===3)break}
+    if(!top.length){body.innerHTML=`<p class="card note">Geen recente prijzen gevonden voor deze route in deze maand${s.dir?" met een directe vlucht. Misschien is er geen directe verbinding; probeer het zonder dit vinkje":""}. Probeer ± 2 dagen, andere data of meer vertrekvliegvelden.</p>`;return}
+    body.innerHTML=(exact?"":`<p class="note">Geen prijzen voor jouw data${s.flex?" (± "+s.flex+(s.flex>1?" dagen":" dag")+")":""}; dit zijn de goedkoopste in dezelfde maand. Let op de datum bij elke vlucht.</p>`)+
+    `<ol class="top3">${top.map((d,i)=>{
+      const air=AIRLINES[d.airline]||d.airline, stops=d.transfers===0?"direct":d.transfers+" overstap"+(d.transfers>1?"pen":"");
+      const back=d.return_at?` · terug ${nl(d.return_at)}`:"";
+      const dep=d.departure_at.slice(0,10), ret=d.return_at?d.return_at.slice(0,10):"";
+      const nonstop=d.transfers===0&&(!d.return_at||d.return_transfers===0);
+      const fs=["airlines="+d.airline].concat(nonstop?["stops=0"]:[]).join(";");
+      const go=`https://www.momondo.nl/flight-search/${esc(d.origin_airport||d.from)}-${esc(d.destination_airport||s.t)}/${dep}${ret?"/"+ret:""}/${s.p}adults?sort=price_a&fs=${encodeURIComponent(fs)}`;
+      const from=d.origin_airport||d.from, to=d.destination_airport||s.t;
+      const city=c=>esc(((BY[c]||{n:c}).n).replace(/ \(.+\)$/,""));
+      const backStops=d.return_at?(d.return_transfers===0?"direct":d.return_transfers+" overstap"+(d.return_transfers>1?"pen":"")):"";
+      return `<li><a class="deal" href="${go}" target="_blank" rel="noopener" aria-label="${i+1}e: ${esc(air)}, vanaf €${Math.round(d.price)} per persoon. Bekijk de actuele prijs en boek">
+        <div class="main">
+          <div class="who"><span class="badge${i===0?" first":""}">${i===0?"Goedkoopst":"#"+(i+1)}</span><span class="air">${esc(air)}</span></div>
+          <div class="amt"><span class="from">vanaf</span><b>€${Math.round(d.price)}</b><small>p.p.</small></div>
+          <div class="route">
+            <div class="leg"><div class="t"><span class="time">${nl(d.departure_at)}${tm(d.departure_at)}</span><span class="badge${d.transfers===0?" ok":""}">${stops}</span></div><span class="way">✈ Heen: ${city(from)} → ${city(to)}</span></div>
+            ${d.return_at?`<div class="leg"><div class="t"><span class="time">${nl(d.return_at)}${tm(d.return_at)}</span><span class="badge${d.return_transfers===0?" ok":""}">${backStops}</span></div><span class="way">↩ Terug: ${city(to)} → ${city(from)}</span></div>`:""}
+          </div>
+          <p class="fresh">Eerder gevonden prijs. De actuele prijs zie je na één tik.</p>
+        </div>
+        <div class="cta"><span>Bekijk de actuele prijs en boek</span><span aria-hidden="true">→</span></div></a>${moreSites(d,s,dep,ret,nonstop)}</li>`;
+    }).join("")}</ol>
+`;
+  }catch(e){
+    body.innerHTML=e.message==="token"
+      ? `<div class="card empty"><p class="err">Prijzen zijn op dit moment niet beschikbaar.</p><p class="note">Probeer het later nog eens.</p></div>`
+      : `<div class="card empty"><p class="err">Prijzen ophalen lukte niet.</p><p class="note">Controleer je internetverbinding en tik opnieuw op "Zoek de goedkoopste vluchten".</p></div>`;
+  }
+}
+
+function run(scroll){
+  const s=read(), e=check(s);
+  $("err").hidden=!e; $("err").textContent=e;
+  if(e) return;
+  store("vw2",s);
+  const t=BY[s.t]||{n:s.t};
+  $("sum").innerHTML=`Naar <strong>${esc(t.n)}</strong> · ${nl(s.d1)}${s.ow?", enkele reis":" – "+nl(s.d2)}${s.flex?" (± "+s.flex+(s.flex>1?" dagen":" dag")+")":""} · ${s.p} ${s.p>1?"personen":"persoon"}${s.dir?" · alleen direct":""}`;
+  drawSites(s);
+  airFound=null; drawAir(s);
+  cheapest(s);
+  if(scroll) $("cheap").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+}
+$("f").addEventListener("submit",ev=>{ev.preventDefault();run(true)});
+
+/* ---------- instellingen ---------- */
+
+
+/* ---------- start ---------- */
+(function init(){
+  const now=new Date(),a=new Date(now),b=new Date(now);
+  a.setDate(a.getDate()+35);b.setDate(b.getDate()+42);
+  const today=iso(now);$("d1").min=today;$("d2").min=today;
+  const s=load("vw2");
+  if(s&&s.d1>=today){origins=s.o;dest=s.t;$("d1").value=s.d1;$("d2").value=s.d2||iso(b);$("pax").value=s.p;setOW(!!s.ow);$("direct").checked=!!s.dir;setFlex(s.flex||0)}
+  else{$("d1").value=iso(a);$("d2").value=iso(b)}
+  /* link vanuit de reisgids, bijv. #van=NRN of #van=NRN,MST */
+  const m=location.hash.match(/van=([A-Z,]+)/i);
+  if(m){const codes=m[1].toUpperCase().split(",").filter(c=>/^[A-Z]{3}$/.test(c));if(codes.length)origins=codes}
+  const n=location.hash.match(/naar=([A-Z]{3})/i);
+  if(n&&BY[n[1].toUpperCase()])dest=n[1].toUpperCase();
+  drawOrigins();drawDest();run(false);
+})();
+if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))}
+
+/* kop "De goedkoopste vluchten!" altijd op één regel: lettergrootte passend maken */
+function fitOne(h,max){
+  if(!h) return; let size=max; h.style.fontSize=size+"px";
+  while(h.scrollWidth>h.clientWidth&&size>16){size--;h.style.fontSize=size+"px"}
+}
+function fitBig(){const wide=innerWidth>=960;fitOne(document.querySelector(".results h2.big"),wide?60:48);fitOne(document.querySelector(".hero h1"),wide?44:40);const b=document.querySelector(".brand b");if(b){b.style.overflow="hidden";fitOne(b,wide?56:44)}}
+fitBig(); addEventListener("resize",fitBig);
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fitBig);
+</script>
+</body>
+</html>
