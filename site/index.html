@@ -289,6 +289,16 @@ form.card{margin-top:-48px;position:relative;z-index:2;box-shadow:0 14px 34px rg
   form.card{margin-top:-64px}
   .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
+
+/* schaduw: witte blokken komen naar voren */
+:root{--lift:0 2px 4px rgba(15,35,58,.10),0 10px 22px rgba(15,35,58,.16),0 24px 44px rgba(15,35,58,.12);--lift-hi:0 4px 8px rgba(15,35,58,.12),0 18px 34px rgba(15,35,58,.22),0 34px 60px rgba(15,35,58,.16)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--lift:0 0 0 1px rgba(255,255,255,.06),0 8px 22px rgba(0,0,0,.45);--lift-hi:0 0 0 1px rgba(255,255,255,.1),0 14px 30px rgba(0,0,0,.55)}}
+:root[data-theme="dark"]{--lift:0 0 0 1px rgba(255,255,255,.06),0 8px 22px rgba(0,0,0,.45);--lift-hi:0 0 0 1px rgba(255,255,255,.1),0 14px 30px rgba(0,0,0,.55)}
+.card,.deal,.more,.sister{box-shadow:var(--lift)}
+.deal:hover,.sister:hover{box-shadow:var(--lift-hi)}
+form.card{box-shadow:var(--lift-hi)}
+.tile{box-shadow:0 6px 16px rgba(19,35,58,.22)}
+.sister{transition:box-shadow .15s}
 </style>
 </head>
 <body>
