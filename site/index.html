@@ -18,7 +18,7 @@
 <meta property="og:description" content="Zoek vanaf meerdere vliegvelden tegelijk, ook net over de grens, en vind de goedkoopste vlucht.">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebApplication","name":"Vluchtwijzer","applicationCategory":"TravelApplication","operatingSystem":"Alle (web-app)","inLanguage":"nl","description":"Gratis app om goedkope vliegtickets te vergelijken vanaf vliegvelden in Nederland, België en Duitsland.","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@type":"Person","name":"Erik"}}
+{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://vluchtwijzer.netlify.app/#site","url":"https://vluchtwijzer.netlify.app/","name":"Vluchtwijzer","inLanguage":"nl","publisher":{"@id":"https://vluchtwijzer.netlify.app/#erik"}},{"@type":"Person","@id":"https://vluchtwijzer.netlify.app/#erik","name":"Erik","email":"erik@beltman.email"},{"@type":"WebApplication","name":"Vluchtwijzer","url":"https://vluchtwijzer.netlify.app/","applicationCategory":"TravelApplication","operatingSystem":"Alle (web-app)","inLanguage":"nl","isAccessibleForFree":true,"description":"Gratis app om goedkope vliegtickets te vergelijken vanaf 16 vliegvelden in Nederland, België en Duitsland tegelijk.","featureList":["Meerdere vertrekvliegvelden tegelijk","Retour of enkele reis","± 1 of 2 dagen flexibel","Alleen directe vluchten"],"offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"author":{"@id":"https://vluchtwijzer.netlify.app/#erik"},"image":"https://vluchtwijzer.netlify.app/deelplaatje.png"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Vluchtwijzer gratis?","acceptedAnswer":{"@type":"Answer","text":"Ja. Zoeken en vergelijken is gratis en je hebt geen account nodig. Je boekt zelf bij de boekingssite of de luchtvaartmaatschappij."}},{"@type":"Question","name":"Vanaf welke vliegvelden kan ik zoeken?","acceptedAnswer":{"@type":"Answer","text":"Vanaf 16 vliegvelden in de buurt: Schiphol, Eindhoven, Rotterdam The Hague, Groningen Eelde en Maastricht Aachen in Nederland; Brussel Zaventem, Charleroi, Antwerpen, Luik en Oostende in België; Düsseldorf, Weeze, Keulen/Bonn, Dortmund, Münster/Osnabrück en Bremen in Duitsland. Andere vliegvelden kun je zelf opzoeken."}},{"@type":"Question","name":"Hoe actueel zijn de prijzen?","acceptedAnswer":{"@type":"Answer","text":"Het zijn eerder gevonden prijzen uit de zoekgegevens van Aviasales, via Travelpayouts. De actuele prijs zie je als je doortikt naar de boekingssite."}},{"@type":"Question","name":"Zijn de prijzen inclusief bagage?","acceptedAnswer":{"@type":"Answer","text":"Nee. De prijzen zijn per persoon en zonder koffer. Tel bagage zelf mee als je prijzen vergelijkt."}},{"@type":"Question","name":"Wanneer is Eindhoven Airport dicht?","acceptedAnswer":{"@type":"Answer","text":"Van 1 februari tot 18 juli 2027, voor de renovatie van de landingsbaan. Transavia vliegt dan vanaf Weeze en Maastricht, TUI vanaf Maastricht Aachen Airport."}}]}]}
 </script>
 <meta name="theme-color" content="#0A5FB4">
 <link rel="manifest" href="manifest.webmanifest">
@@ -204,12 +204,9 @@ dialog ol{padding-left:20px}
 
 /* computer: twee kolommen, zoekformulier links (blijft staan), resultaten rechts */
 @media (min-width:960px){
-  .wrap{max-width:1180px;grid-template-columns:420px minmax(0,1fr);column-gap:40px;row-gap:22px;padding-block:28px 64px}
-  .brand,.hero{grid-column:1 / -1}
-  .hero{padding-bottom:6px;border-bottom:1px solid var(--line)}
-  form.card{grid-column:1;grid-row:3 / span 4;align-self:start;position:sticky;top:20px;box-shadow:0 10px 30px rgba(19,35,58,.08)}
-  #cheap,#air,details.card,footer{grid-column:2}
-  #cheap{align-content:start}
+  .wrap{max-width:1180px;grid-template-columns:420px minmax(0,1fr);column-gap:40px;padding-block:0 64px;align-items:start}
+  form.card{position:sticky;top:20px;box-shadow:0 18px 40px rgba(19,35,58,.16)}
+  .col{padding-top:28px}
   footer{text-align:left}
   .deal .main{padding:18px 22px 14px;grid-template-columns:1fr auto;column-gap:24px}
   .deal .route{grid-template-columns:1fr 1fr;gap:16px}
@@ -222,20 +219,97 @@ dialog ol{padding-left:20px}
 .sister b{font-size:17px}.sister span{color:var(--accent);font-weight:700;font-size:15px}
 .sister:hover{border-color:var(--accent)}
 footer .apps{font-size:14px}
-@media (min-width:960px){.sister{grid-column:2}}
-.brand b{font-size:min(44px,12.25vw)}.hero h1{font-size:min(40px,8.6vw)}@media(min-width:960px){.brand b{font-size:56px}.hero h1{font-size:44px}}</style>
+.brand b{font-size:min(44px,12.25vw)}.hero h1{font-size:min(40px,8.6vw)}@media(min-width:960px){.brand b{font-size:56px}.hero h1{font-size:44px}}
+/* blauwe kop met vliegroute */
+.top{background:linear-gradient(160deg,#0A5FB4 0%,#0B3F7A 55%,#13233A 100%);color:#fff;overflow:hidden}
+.top-in{position:relative;max-width:640px;margin:0 auto;padding-block:18px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+.top .brand b{color:#fff;-webkit-text-stroke-color:#fff}
+.top .brand b span{-webkit-text-stroke-color:var(--signal-ink)}
+.top .mark{background:#fff}.top .mark svg{fill:#0A5FB4}
+.top .hero h1{color:#fff;margin:0}
+.lead{margin:6px 0 0;font-size:17px;line-height:1.45;color:#DCE8F6;max-width:52ch}
+.chips{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.chips li{font-size:13px;font-weight:700;padding:5px 11px 5px 26px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);position:relative}
+.chips li::before{content:"";position:absolute;left:10px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:var(--signal)}
+.arc{position:absolute;right:-30px;bottom:6px;width:min(420px,70%);height:auto;color:rgba(255,255,255,.28);pointer-events:none}
+.top .hero{position:relative;z-index:1}
+form.card{margin-top:-48px;position:relative;z-index:2;box-shadow:0 14px 34px rgba(19,35,58,.18)}
+.col{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;min-width:0}
+
+/* boardingpass */
+.deal .iata{font-family:var(--f-mono);font-weight:700;font-size:14px;color:var(--muted);letter-spacing:.04em}
+.deal .iata i{font-style:normal;color:var(--accent);margin:0 2px}
+.deal .cta{position:relative;border-top:2px dashed rgba(255,255,255,.45)}
+.top3 li:not(:first-child) .deal .cta{border-top-color:var(--line)}
+.deal .cta::before,.deal .cta::after{content:"";position:absolute;top:-11px;width:20px;height:20px;border-radius:50%;background:var(--bg)}
+.deal .cta::before{left:-11px}.deal .cta::after{right:-11px}
+.deal{transition:transform .15s,box-shadow .15s}
+.deal:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(19,35,58,.12)}
+
+/* prijskalender */
+.cal{display:grid;gap:6px}
+.cal h3{margin:0;font-size:18px}
+.cal-strip{position:relative;display:flex;gap:6px;overflow-x:auto;padding:8px 2px 4px;scroll-snap-type:x proximity;scrollbar-width:thin}
+.day{flex:none;width:58px;display:grid;justify-items:center;align-content:end;gap:3px;padding:6px 2px;border-radius:10px;border:1px solid transparent;background:none;cursor:pointer;scroll-snap-align:center;min-height:118px}
+.day .bar{width:30px;border-radius:6px 6px 2px 2px;background:var(--accent-soft)}
+.day b{font-size:14px;font-variant-numeric:tabular-nums}
+.day .dd{font-size:12px;color:var(--muted);white-space:nowrap}
+.day:hover{background:var(--soft)}
+.day.low .bar{background:var(--signal)}
+.day.low b{color:var(--good)}
+.day.sel{border-color:var(--accent);background:var(--accent-soft)}
+.day.sel .bar{background:var(--accent)}
+
+/* bestemmingen als vertrekbord */
+.dests{display:grid;gap:12px}
+.dests h2{margin:0;font-size:20px}
+.dests h3{margin:6px 0 0;font-size:16px}
+.tiles{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.tiles li{display:grid;gap:4px;min-width:0}
+.tile{display:grid;gap:2px;justify-items:start;text-align:left;padding:12px;border-radius:12px;border:0;background:#13233A;color:#fff;cursor:pointer;min-width:0}
+.tile .board{font-family:var(--f-mono);font-weight:700;font-size:22px;letter-spacing:.12em;color:var(--signal);background:#0B1626;border-radius:6px;padding:2px 8px;margin-bottom:6px}
+.tile b{font-size:17px}
+.tile .where{font-size:13px;color:#B7C6DA}
+.tile .look{margin-top:6px;font-size:13px;font-weight:700;color:var(--signal)}
+.tile:hover{background:#0A5FB4}
+.guide{font-size:13px;color:var(--accent);padding:0 4px}
+.froms{margin:0;display:flex;flex-wrap:wrap;gap:6px}
+.froms a{font-size:14px;font-weight:700;color:var(--accent);text-decoration:none;padding:6px 12px;border-radius:999px;background:var(--accent-soft)}
+.froms a:hover{background:var(--accent);color:var(--accent-ink)}
+
+/* FAQ */
+.faq h3{margin:4px 0 0;font-size:16px}
+.faq h3+p{margin-top:-6px}
+@media (prefers-reduced-motion:reduce){.deal:hover{transform:none}}
+@media (max-width:599px){.chips{display:none}.top-in{padding-block:16px 60px}}
+@media (min-width:960px){
+  .top-in{max-width:1180px;padding-block:28px 88px}
+  .top .hero{max-width:640px}
+  .arc{right:40px;bottom:14px;width:440px}
+  form.card{margin-top:-64px}
+  .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+</style>
 </head>
 <body>
-<div class="wrap">
-<header class="brand">
+<header class="top">
+<div class="top-in">
+<div class="brand">
   <span class="mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></span>
   <b>Vlucht<span>wijzer</span></b>
-</header>
-
+</div>
 <div class="hero">
   <h1>Vind de goedkoopste vlucht</h1>
+  <p class="lead">Vergelijk vliegtickets vanaf 16 vliegvelden in Nederland, België en Duitsland tegelijk. Gratis en zonder account.</p>
+  <ul class="chips" aria-label="Waarom Vluchtwijzer">
+    <li>Schiphol, Eindhoven en Rotterdam</li><li>Ook Weeze, Düsseldorf en Charleroi</li><li>Retour of enkele reis</li>
+  </ul>
 </div>
+<svg class="arc" viewBox="0 0 400 140" aria-hidden="true"><path d="M8 132 C 120 -20, 280 -20, 392 110" fill="none" stroke="currentColor" stroke-width="2.5" stroke-dasharray="2 10" stroke-linecap="round"/><circle cx="8" cy="132" r="6" fill="currentColor"/><circle cx="392" cy="110" r="6" fill="currentColor"/></svg>
+</div>
+</header>
 
+<div class="wrap">
 <form class="card" id="f" novalidate autocomplete="off">
   <div class="step">
     <span class="num" aria-hidden="true">1</span>
@@ -310,10 +384,28 @@ footer .apps{font-size:14px}
   <button class="go" type="submit">Zoek de goedkoopste vluchten</button>
 </form>
 
+<div class="col">
 <section class="results" id="cheap" aria-live="polite">
   <h2 class="big">De goedkoopste vluchten!</h2>
   <div class="summary" id="sum"></div>
   <div id="cheapBody"></div>
+  <div class="cal card" id="cal" hidden></div>
+</section>
+
+
+<section class="dests card" aria-labelledby="destH">
+  <h2 id="destH">Populaire bestemmingen</h2>
+  <p class="note">Tik op een bestemming om de goedkoopste vluchten te zien. In de gids lees je per bestemming welke vliegvelden en maatschappijen er vliegen.</p>
+  <ul class="tiles">
+    <li><button type="button" class="tile" data-naar="ALC"><span class="board">ALC</span><b>Alicante</b><span class="where">Spanje · Costa Blanca</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-alicante.html">Gids: goedkoop naar Alicante</a></li>
+    <li><button type="button" class="tile" data-naar="AGP"><span class="board">AGP</span><b>Málaga</b><span class="where">Spanje · Costa del Sol</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-malaga.html">Gids: goedkoop naar Málaga</a></li>
+    <li><button type="button" class="tile" data-naar="FAO"><span class="board">FAO</span><b>Faro</b><span class="where">Portugal · Algarve</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-faro.html">Gids: goedkoop naar Faro</a></li>
+    <li><button type="button" class="tile" data-naar="TFS"><span class="board">TFS</span><b>Tenerife</b><span class="where">Spanje · Canarische Eilanden</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-tenerife.html">Gids: goedkoop naar Tenerife</a></li>
+    <li><button type="button" class="tile" data-naar="LPA"><span class="board">LPA</span><b>Gran Canaria</b><span class="where">Spanje · Canarische Eilanden</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-gran-canaria.html">Gids: goedkoop naar Gran Canaria</a></li>
+    <li><button type="button" class="tile" data-naar="AYT"><span class="board">AYT</span><b>Antalya</b><span class="where">Turkije · Turkse Rivièra</span><span class="look">Zoek prijzen →</span></button><a class="guide" href="/gids/goedkoop-vliegen-naar-antalya.html">Gids: goedkoop naar Antalya</a></li>
+  </ul>
+  <h3>Vliegvelden in de buurt</h3>
+  <p class="froms"><a href="/gids/vliegen-vanaf-schiphol.html">Schiphol</a> <a href="/gids/vliegen-vanaf-rotterdam.html">Rotterdam</a> <a href="/gids/vliegen-vanaf-eindhoven.html">Eindhoven</a> <a href="/gids/vliegen-vanaf-maastricht.html">Maastricht</a> <a href="/gids/vliegen-vanaf-weeze.html">Weeze</a> <a href="/gids/vliegen-vanaf-dusseldorf.html">Düsseldorf</a> <a href="/gids/vliegen-vanaf-keulen-bonn.html">Keulen-Bonn</a> <a href="/gids/vliegen-vanaf-brussel-zaventem.html">Brussel</a> <a href="/gids/vliegen-vanaf-charleroi.html">Charleroi</a></p>
 </section>
 
 <a class="sister" href="https://vakantietoppers.netlify.app/"><b>Ook een hotel of vakantie nodig?</b><span>Zoek in Vakantiewijzer tegelijk op Booking.com, Zoover, TUI en meer →</span></a>
@@ -347,12 +439,30 @@ footer .apps{font-size:14px}
   </div>
 </details>
 
+<details class="card" id="faq">
+  <summary>Veelgestelde vragen</summary>
+  <div class="inner faq">
+    <h3>Is Vluchtwijzer gratis?</h3>
+    <p>Ja. Zoeken en vergelijken is gratis en je hebt geen account nodig. Je boekt zelf bij de boekingssite of de luchtvaartmaatschappij.</p>
+    <h3>Vanaf welke vliegvelden kan ik zoeken?</h3>
+    <p>Vanaf 16 vliegvelden in de buurt: Schiphol, Eindhoven, Rotterdam The Hague, Groningen Eelde en Maastricht Aachen in Nederland; Brussel Zaventem, Charleroi, Antwerpen, Luik en Oostende in België; Düsseldorf, Weeze, Keulen/Bonn, Dortmund, Münster/Osnabrück en Bremen in Duitsland. Andere vliegvelden kun je zelf opzoeken.</p>
+    <h3>Hoe actueel zijn de prijzen?</h3>
+    <p>Het zijn eerder gevonden prijzen uit de zoekgegevens van Aviasales, via Travelpayouts. De actuele prijs zie je als je doortikt naar de boekingssite.</p>
+    <h3>Zijn de prijzen inclusief bagage?</h3>
+    <p>Nee. De prijzen zijn per persoon en zonder koffer. Tel bagage zelf mee als je prijzen vergelijkt.</p>
+    <h3>Wanneer is Eindhoven Airport dicht?</h3>
+    <p>Van 1 februari tot 18 juli 2027, voor de renovatie van de landingsbaan. Transavia vliegt dan vanaf Weeze en Maastricht, TUI vanaf Maastricht Aachen Airport.</p>
+    <p>Meer over Eindhoven: <a href="/gids/eindhoven-airport-dicht-2027.html">Eindhoven Airport dicht in 2027</a>.</p>
+  </div>
+</details>
+
 <footer>
   <p>Prijzen per persoon, zonder bagage. Eerder gevonden prijzen; de actuele prijs zie je bij het boeken. Bron: Travelpayouts.</p>
   <p><a href="gids/">Reisgids: vliegvelden vergeleken, populaire bestemmingen en tips voor goedkope vliegtickets</a></p>
   <p class="apps">Meer apps van Erik: <a href="https://vakantietoppers.netlify.app/">Vakantiewijzer</a> (vakanties vergelijken) · <a href="https://goedkopertanken.netlify.app/">Tankwijzer</a> (goedkoop tanken in Nederland, België en Duitsland) · <a href="https://euroroadrules.eu/nl/">EuroRoadRules</a> (tol, vignetten en verkeersregels in Europa) · <a href="https://boodschappenvergelijk.nl/">Boodschappenvergelijk.nl</a> (goedkoopste supermarkt) · <a href="https://foutcodezoeker.nl/">Foutcodezoeker</a> (storingen zelf oplossen)</p>
 <p class="made">Made by <a href="mailto:erik@beltman.email">Erik</a></p>
 </footer>
+</div>
 </div>
 
 
@@ -572,14 +682,19 @@ function moreSites(d,s,dep,ret,nonstop){
 }
 /* ---------- goedkoopste 3 via Travelpayouts ---------- */
 const API = "/api/tp";
+const PC=new Map();
 async function fetchPrices(o,s,dep,ret){
   const q=new URLSearchParams({origin:o,destination:s.t,departure_at:dep,currency:"eur",market:"nl",sorting:"price",limit:"100",one_way:String(s.ow),direct:String(!!s.dir)});
   if(!s.ow&&ret) q.set("return_at",ret);
-  const r=await fetch(`${API}/aviasales/v3/prices_for_dates?${q}`);
-  if(r.status===401||r.status===403) throw new Error("token");
-  if(!r.ok) throw new Error("http");
-  const j=await r.json();
-  return (j.data||[]).map(d=>({...d,from:o}));
+  const url=`${API}/aviasales/v3/prices_for_dates?${q}`;
+  if(!PC.has(url)) PC.set(url,(async()=>{
+    const r=await fetch(url);
+    if(r.status===401||r.status===403) throw new Error("token");
+    if(!r.ok) throw new Error("http");
+    const j=await r.json();
+    return (j.data||[]).map(d=>({...d,from:o}));
+  })());
+  try{return await PC.get(url)}catch(e){PC.delete(url);throw e}
 }
 function shift(d,n){const x=new Date(d+"T12:00:00Z");x.setUTCDate(x.getUTCDate()+n);return x.toISOString().slice(0,10)}
 function windowOf(d,f){const out=[];for(let n=-f;n<=f;n++)out.push(shift(d,n));return out}
@@ -629,7 +744,7 @@ async function cheapest(s){
       const backStops=d.return_at?(d.return_transfers===0?"direct":d.return_transfers+" overstap"+(d.return_transfers>1?"pen":"")):"";
       return `<li><a class="deal" href="${go}" target="_blank" rel="noopener" aria-label="${i+1}e: ${esc(air)}, vanaf €${Math.round(d.price)} per persoon. Bekijk de actuele prijs en boek">
         <div class="main">
-          <div class="who"><span class="badge${i===0?" first":""}">${i===0?"Goedkoopst":"#"+(i+1)}</span><span class="air">${esc(air)}</span></div>
+          <div class="who"><span class="badge${i===0?" first":""}">${i===0?"Goedkoopst":"#"+(i+1)}</span><span class="air">${esc(air)}</span><span class="iata" aria-hidden="true">${esc(from)} <i>✈</i> ${esc(to)}</span></div>
           <div class="amt"><span class="from">vanaf</span><b>€${Math.round(d.price)}</b><small>p.p.</small></div>
           <div class="route">
             <div class="leg"><div class="t"><span class="time">${nl(d.departure_at)}${tm(d.departure_at)}</span><span class="badge${d.transfers===0?" ok":""}">${stops}</span></div><span class="way">✈ Heen: ${city(from)} → ${city(to)}</span></div>
@@ -647,6 +762,26 @@ async function cheapest(s){
   }
 }
 
+/* prijskalender: goedkoopste prijs per vertrekdag in de maand */
+async function priceCal(s){
+  const box=$("cal"); box.innerHTML=""; box.hidden=true;
+  const m=s.d1.slice(0,7), rm=s.ow?null:s.d2.slice(0,7);
+  let raw; try{raw=await gather(s,s.o.map(o=>[o,m,rm]))}catch(e){return}
+  const today=iso(new Date()), best={};
+  raw.forEach(d=>{const k=(d.departure_at||"").slice(0,10);if(k<today||k.slice(0,7)!==m)return;if(!best[k]||d.price<best[k].price)best[k]=d});
+  const days=Object.keys(best).sort(); if(days.length<2) return;
+  const ps=days.map(k=>best[k].price), lo=Math.min(...ps), hi=Math.max(...ps);
+  const month=new Date(m+"-15T12:00").toLocaleDateString("nl-NL",{month:"long"});
+  box.innerHTML=`<h3>Goedkoopste vertrekdagen in ${month}</h3><p class="note">${s.ow?"Enkele reis":"Retour; de verblijfsduur kan per dag verschillen"}, per persoon. Tik op een dag om die te kiezen.</p>
+  <div class="cal-strip" role="list">${days.map(k=>{const d=best[k], h=hi===lo?60:Math.round(24+(d.price-lo)/(hi-lo)*56);
+    const dt=new Date(k+"T12:00"), wd=dt.toLocaleDateString("nl-NL",{weekday:"short"}), dn=dt.getDate();
+    const cls=(d.price===lo?" low":"")+(k===s.d1?" sel":"");
+    return `<button type="button" role="listitem" class="day${cls}" data-d="${k}" data-r="${d.return_at?d.return_at.slice(0,10):""}" aria-label="${esc(nl(k))}: vanaf €${Math.round(d.price)}${d.return_at?", terug "+esc(nl(d.return_at.slice(0,10))):""}"><span class="bar" style="height:${h}px"></span><b>€${Math.round(d.price)}</b><span class="dd">${wd} ${dn}</span></button>`}).join("")}</div>`;
+  box.hidden=false;
+  box.querySelectorAll(".day").forEach(b=>b.onclick=()=>{$("d1").value=b.dataset.d;if(!oneWay&&b.dataset.r)$("d2").value=b.dataset.r;run(true)});
+  const sel=box.querySelector(".day.sel"), st=box.querySelector(".cal-strip"); if(sel) st.scrollLeft=sel.offsetLeft-st.clientWidth/2+sel.offsetWidth/2;
+}
+
 function run(scroll){
   const s=read(), e=check(s);
   $("err").hidden=!e; $("err").textContent=e;
@@ -656,7 +791,7 @@ function run(scroll){
   $("sum").innerHTML=`Naar <strong>${esc(t.n)}</strong> · ${nl(s.d1)}${s.ow?", enkele reis":" – "+nl(s.d2)}${s.flex?" (± "+s.flex+(s.flex>1?" dagen":" dag")+")":""} · ${s.p} ${s.p>1?"personen":"persoon"}${s.dir?" · alleen direct":""}`;
   drawSites(s);
   airFound=null; drawAir(s);
-  cheapest(s);
+  cheapest(s); priceCal(s);
   if(scroll) $("cheap").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
 }
 $("f").addEventListener("submit",ev=>{ev.preventDefault();run(true)});
@@ -688,6 +823,7 @@ function fitOne(h,max){if(document.fonts&&document.fonts.status!=="loaded")retur
 }
 function fitBig(){const wide=innerWidth>=960;fitOne(document.querySelector(".results h2.big"),wide?60:48);fitOne(document.querySelector(".hero h1"),wide?44:40);const b=document.querySelector(".brand b");if(b){b.style.overflow="hidden";fitOne(b,wide?56:44)}}
 fitBig(); addEventListener("resize",fitBig);
+document.querySelectorAll(".tile[data-naar]").forEach(b=>b.addEventListener("click",()=>{dest=b.dataset.naar;drawDest();run(true)}));
 if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fitBig);
 </script>
 </body>

@@ -4,6 +4,13 @@
 
 Gemaakt door Erik (erik@beltman.email). Geen reclame, geen tracking-cookies.
 
+## Kernfeiten
+- Vluchtwijzer zoekt goedkope vliegtickets vanaf 16 vliegvelden tegelijk: Schiphol, Eindhoven, Rotterdam The Hague, Groningen Eelde en Maastricht Aachen (NL); Brussel Zaventem, Charleroi, Antwerpen, Luik en Oostende (BE); Düsseldorf, Weeze, Keulen/Bonn, Dortmund, Münster/Osnabrück en Bremen (DE).
+- Toont de drie goedkoopste vluchten, retour of enkele reis, optioneel alleen direct en met ± 1 of 2 dagen speling, plus een prijskalender met de goedkoopste vertrekdag per maand.
+- Prijzen zijn eerder gevonden prijzen per persoon zonder bagage, uit de zoekgegevens van Aviasales via Travelpayouts. De actuele prijs staat op de boekingssite.
+- Gratis, zonder account. Boeken gaat via Momondo, Skyscanner, Kayak, Expedia, Opodo of direct bij de maatschappij.
+- Eindhoven Airport is dicht van 1 februari tot 18 juli 2027 (renovatie landingsbaan); Transavia vliegt dan vanaf Weeze en Maastricht, TUI vanaf Maastricht.
+
 ## Pagina's
 - [Vluchtwijzer – Goedkope vliegtickets vergelijken vanaf Nederland, België en Duitsland](https://vluchtwijzer.netlify.app/)
 - [Reisgids: goedkoop vliegen vanaf Nederland, België en Duitsland | Vluchtwijzer](https://vluchtwijzer.netlify.app/gids/)
