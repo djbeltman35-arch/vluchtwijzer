@@ -39,3 +39,4 @@ Gemaakt door Erik (djbeltman35@gmail.com). Geen reclame, geen tracking-cookies.
 - [Goedkoop vliegen naar Kreta: vliegvelden en tips](https://vluchtwijzer.netlify.app/gids/goedkoop-vliegen-naar-kreta.html)
 - [Goedkoop vliegen naar Istanbul: vliegvelden en tips](https://vluchtwijzer.netlify.app/gids/goedkoop-vliegen-naar-istanbul.html)
 - [Goedkoop vliegen naar Curaçao: vliegvelden en tips](https://vluchtwijzer.netlify.app/gids/goedkoop-vliegen-naar-curacao.html)
+- [Goedkoop vliegen naar Hurghada: vliegvelden, visum en tips](https://vluchtwijzer.netlify.app/gids/goedkoop-vliegen-naar-hurghada.html)

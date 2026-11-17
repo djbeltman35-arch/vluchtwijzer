@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://vluchtwijzer.netlify.app/</loc><lastmod>2026-11-15</lastmod></url>
-  <url><loc>https://vluchtwijzer.netlify.app/gids/</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://vluchtwijzer.netlify.app/</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://vluchtwijzer.netlify.app/gids/</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://vluchtwijzer.netlify.app/gids/welk-vliegveld-kiezen.html</loc><lastmod>2026-11-15</lastmod></url>
   <url><loc>https://vluchtwijzer.netlify.app/gids/vliegen-vanaf-schiphol.html</loc><lastmod>2026-11-15</lastmod></url>
   <url><loc>https://vluchtwijzer.netlify.app/gids/vliegen-vanaf-rotterdam.html</loc><lastmod>2026-11-15</lastmod></url>
   <url><loc>https://vluchtwijzer.netlify.app/gids/vliegen-vanaf-eindhoven.html</loc><lastmod>2026-11-15</lastmod></url>
   <url><loc>https://vluchtwijzer.netlify.app/gids/vliegen-vanaf-weeze.html</loc><lastmod>2026-11-15</lastmod></url>
-  <url><loc>https://vluchtwijzer.netlify.app/gids/vliegen-vanaf-dusseldorf.html</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://vluchtwijzer.netlify.app/gids/vliegen-vanaf-dusseldorf.html</loc><lastmod>2026-11-17</lastmod></url>
   <url><loc>https://vluchtwijzer.netlify.app/gids/vliegen-vanaf-keulen-bonn.html</loc><lastmod>2026-11-15</lastmod></url>
   <url><loc>https://vluchtwijzer.netlify.app/gids/vliegen-vanaf-maastricht.html</loc><lastmod>2026-11-15</lastmod></url>
   <url><loc>https://vluchtwijzer.netlify.app/gids/vliegen-vanaf-brussel-zaventem.html</loc><lastmod>2026-11-15</lastmod></url>
@@ -26,5 +26,6 @@
   <url><loc>https://vluchtwijzer.netlify.app/gids/goedkoop-vliegen-naar-mallorca.html</loc><lastmod>2026-11-15</lastmod></url>
   <url><loc>https://vluchtwijzer.netlify.app/gids/goedkoop-vliegen-naar-kreta.html</loc><lastmod>2026-11-15</lastmod></url>
   <url><loc>https://vluchtwijzer.netlify.app/gids/goedkoop-vliegen-naar-istanbul.html</loc><lastmod>2026-11-15</lastmod></url>
-  <url><loc>https://vluchtwijzer.netlify.app/gids/goedkoop-vliegen-naar-curacao.html</loc><lastmod>2026-11-15</lastmod></url>
+  <url><loc>https://vluchtwijzer.netlify.app/gids/goedkoop-vliegen-naar-curacao.html</loc><lastmod>2026-11-17</lastmod></url>
+  <url><loc>https://vluchtwijzer.netlify.app/gids/goedkoop-vliegen-naar-hurghada.html</loc><lastmod>2026-11-17</lastmod></url>
 </urlset>
