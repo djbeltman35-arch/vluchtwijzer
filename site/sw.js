@@ -1,4 +1,4 @@
-const CACHE = "vluchtwijzer-v48";
+const CACHE = "vluchtwijzer-v49";
 const SHELL = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "airports.js"];
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
