@@ -301,6 +301,7 @@ form.card{margin-top:-48px;position:relative;z-index:2;box-shadow:0 14px 34px rg
 form.card{box-shadow:var(--lift-hi)}
 .tile{box-shadow:0 6px 16px rgba(19,35,58,.22)}
 .sister{transition:box-shadow .15s}
+.dcv{margin:14px 0}.dcv h2{margin:0 0 4px}.dcv-sub{margin:0 0 10px;color:var(--muted)}.dcv-chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:4px;margin-bottom:10px}.dcv-chips button{flex:0 0 auto;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:7px 13px;font:600 14px var(--f-body);cursor:pointer}.dcv-chips button.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}.dcv-frame{display:block;width:100%;border:0;height:0;overflow:hidden}.dcv-laden{color:var(--muted);margin:6px 0}.dcv-meer{display:block;width:100%;margin-top:10px;padding:12px;border:1px solid var(--accent);background:transparent;color:var(--accent);border-radius:12px;font:700 15px var(--f-body);cursor:pointer}.dcv .ad{font-size:13px;color:var(--muted);margin:8px 0 0}
 </style>
 </head>
 <body>
@@ -403,6 +404,30 @@ form.card{box-shadow:var(--lift-hi)}
   <div id="cheapBody"></div>
   <div class="cal card" id="cal" hidden></div>
 </section>
+
+<!-- dcv:start -->
+<section class="dcv" id="aanbod" aria-labelledby="dcvH">
+  <h2 id="dcvH">Vlucht + hotel vergelijken</h2>
+  <p class="dcv-sub">Complete vliegvakanties van verschillende reisaanbieders, de goedkoopste eerst.</p>
+  <div class="dcv-chips" role="group" aria-label="Kies een bestemming"><button type="button" data-cc="" class="on">Alle</button><button type="button" data-cc="ES">Spanje</button><button type="button" data-cc="GR">Griekenland</button><button type="button" data-cc="TR">Turkije</button><button type="button" data-cc="EG">Egypte</button><button type="button" data-cc="IT">Italië</button><button type="button" data-cc="PT">Portugal</button><button type="button" data-cc="CY">Cyprus</button><button type="button" data-cc="BG">Bulgarije</button></div>
+  <iframe class="dcv-frame" id="dcvFrame" title="Vlucht + hotel vergelijken" scrolling="no"></iframe>
+  <p class="dcv-laden" id="dcvLaden">Aanbiedingen laden…</p>
+  <button type="button" class="dcv-meer" id="dcvMeer" hidden>Toon meer aanbiedingen</button>
+  <p class="ad">Advertentie. Boek je via deze vergelijker, dan krijgt deze site een vergoeding. Jij betaalt niets extra.</p>
+</section>
+<script>(function(){var C={"mediaId": 448359, "subId": "vluchtwijzer", "extra": {"travelTransportationType": {"value": ["flight"]}}},cc="",n=3,fr=document.getElementById("dcvFrame"),ro=null,gestart=false;
+function hoogte(){try{var d=fr.contentDocument;if(d&&d.body){var h=d.body.scrollHeight;if(h>40){fr.style.height=h+"px";document.getElementById("dcvLaden").hidden=true;document.getElementById("dcvMeer").hidden=false;}}}catch(e){}}
+function laad(){var f={};for(var k in C.extra)f[k]=C.extra[k];if(cc)f.destinationCountry={value:[cc]};
+var c={mediaId:C.mediaId,subId:C.subId+(cc?"-"+cc.toLowerCase():""),language:"nl",limit:n,limitSplit:n,showFilters:false,filter:f};
+fr.style.height="0px";document.getElementById("dcvLaden").hidden=false;document.getElementById("dcvMeer").hidden=true;
+fr.srcdoc='<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><base target="_blank"><style>html,body{margin:0;background:transparent}</style></head><body><div class="dc-tool dc-vacation-tool" data-config=\''+JSON.stringify(c).replace(/'/g,"&#39;")+'\'></div><script src="https://daisycon.tools/vacation/app.js"><\/script></body></html>';}
+fr.addEventListener("load",function(){try{if(ro)ro.disconnect();ro=new ResizeObserver(hoogte);ro.observe(fr.contentDocument.body);}catch(e){}hoogte();setTimeout(hoogte,1500);setTimeout(hoogte,4000);});
+document.querySelector("#aanbod .dcv-chips").addEventListener("click",function(e){var b=e.target.closest("[data-cc]");if(!b)return;cc=b.dataset.cc;n=3;
+document.querySelectorAll("#aanbod [data-cc]").forEach(function(x){x.classList.toggle("on",x===b);});laad();});
+document.getElementById("dcvMeer").addEventListener("click",function(){n+=6;laad();});
+function start(){if(gestart)return;gestart=true;laad();}
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){if(es.some(function(x){return x.isIntersecting;})){io.disconnect();start();}},{rootMargin:"600px"});io.observe(document.getElementById("aanbod"));}else start();})();</script>
+<!-- dcv:end -->
 
 <section class="partners" aria-labelledby="partH" id="reispartner">
   <h2 id="partH">Handig voor je reis</h2>
