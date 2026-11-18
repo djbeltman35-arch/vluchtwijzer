@@ -216,7 +216,7 @@ dialog ol{padding-left:20px}
   .top3{gap:16px}
 }
 @media (min-width:960px) and (max-height:820px){form.card{position:static}}
-.partners{margin:14px 0}.partners h2{margin:0 0 8px}.pgrid{display:grid;gap:10px}@media(min-width:700px){.pgrid{grid-template-columns:1fr 1fr}}.partners .ad{font-size:13px;color:var(--muted);margin:8px 0 0}
+.partners{margin:14px 0}.partners h2{margin:0 0 8px}.pgrid{display:grid;gap:10px;margin-top:10px}@media(min-width:700px){.pgrid{grid-template-columns:1fr 1fr}}.partners .ad{font-size:13px;color:var(--muted);margin:8px 0 0}.rp-l{display:grid;gap:4px;font-weight:700}.rp-l select{padding:10px;border:1px solid var(--line);border-radius:12px;font:inherit;background:var(--paper);color:var(--ink)}.rp-chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.rp-chips button{border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:6px 12px;font:600 14px var(--f-body);cursor:pointer}.rp-chips button.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}[hidden]{display:none!important}
 .sister{display:grid;gap:4px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--paper);text-decoration:none;color:var(--ink)}
 .sister b{font-size:17px}.sister span{color:var(--accent);font-weight:700;font-size:15px}
 .sister:hover{border-color:var(--accent)}
@@ -430,14 +430,27 @@ form.card{box-shadow:var(--lift-hi)}
 
 <a class="sister" href="https://vakantietoppers.netlify.app/"><b>Ook een hotel of vakantie nodig?</b><span>Zoek in Vakantiewijzer tegelijk op Booking.com, Zoover, TUI en meer →</span></a>
 
-<section class="partners" aria-labelledby="partH">
+<section class="partners" aria-labelledby="partH" id="reispartner">
   <h2 id="partH">Handig voor je reis</h2>
+  <label class="rp-l"><span>Waar ga je naartoe?</span><select id="rpLand"><option value="0">Spanje</option><option value="1">Italië</option><option value="2">Portugal</option><option value="3">Griekenland</option><option value="4">Turkije</option><option value="5">Frankrijk</option><option value="6">Kroatië</option><option value="7">Cyprus</option><option value="8">Malta</option><option value="9">IJsland</option><option value="10">Noorwegen</option><option value="11">Oostenrijk</option><option value="12">Zwitserland</option><option value="13">Duitsland</option><option value="14">Engeland</option><option value="15">Schotland</option><option value="16">Ierland</option><option value="17">Marokko</option><option value="18">Curaçao</option><option value="19">Egypte</option><option value="20">Tunesië</option><option value="21">Kaapverdië</option><option value="22">Dubai (VAE)</option><option value="23">Verenigde Staten</option><option value="24">Mexico</option><option value="25">Dominicaanse Republiek</option><option value="26">Aruba</option><option value="27">Thailand</option><option value="28">Indonesië / Bali</option><option value="29">Japan</option></select></label>
+  <div class="rp-chips"><button type="button" data-rp="0">Spanje</button><button type="button" data-rp="4">Turkije</button><button type="button" data-rp="3">Griekenland</button><button type="button" data-rp="19">Egypte</button></div>
   <div class="pgrid">
-    <a class="sister" href="https://www.awin1.com/cread.php?awinmid=128671&amp;awinaffid=3152283&amp;clickref=vluchtwijzer" rel="sponsored noopener" target="_blank"><b>🚗 Huurauto op je bestemming</b><span>Vergelijk huurauto's met alle verzekeringen inbegrepen bij Sunny Cars →</span></a>
-    <a class="sister" href="https://www.awin1.com/cread.php?awinmid=128623&amp;awinaffid=3152283&amp;clickref=vluchtwijzer" rel="sponsored noopener" target="_blank"><b>📶 Internet in het buitenland</b><span>Regel vooraf een eSIM met data via Saily, ook buiten de EU →</span></a>
+    <a class="sister" id="rpCar" rel="sponsored noopener" target="_blank" href="https://www.awin1.com/cread.php?awinmid=128671&amp;awinaffid=3152283&amp;clickref=vluchtwijzer"><b id="rpCarB">🚗 Huurauto in Spanje</b><span>Vergelijk huurauto's met alle verzekeringen inbegrepen bij Sunny Cars →</span></a>
+    <a class="sister" id="rpSim" rel="sponsored noopener" target="_blank" href="https://www.awin1.com/cread.php?awinmid=128623&amp;awinaffid=3152283&amp;clickref=vluchtwijzer"><b id="rpSimB">📶 eSIM voor Spanje</b><span id="rpSimT">Mobiel internet via Saily →</span></a>
   </div>
-  <p class="ad">Advertentie. Boek of koop je via deze links, dan krijgt Vluchtwijzer een kleine vergoeding. Jij betaalt niets extra.</p>
+  <p class="ad">Advertentie. Boek of koop je via deze links, dan krijgt deze site een kleine vergoeding. Jij betaalt niets extra.</p>
 </section>
+<script>(function(){var D=[["Spanje", "spanje", "spain", true], ["Italië", "italie", "italy", true], ["Portugal", "portugal", "portugal", true], ["Griekenland", "griekenland", "greece", true], ["Turkije", "turkije", "turkey", false], ["Frankrijk", "frankrijk", "france", true], ["Kroatië", "kroatie", "croatia", true], ["Cyprus", "cyprus", "cyprus", true], ["Malta", "malta", "malta", true], ["IJsland", "ijsland", "iceland", true], ["Noorwegen", "noorwegen", "norway", true], ["Oostenrijk", "oostenrijk", "austria", true], ["Zwitserland", "zwitserland", "switzerland", false], ["Duitsland", "duitsland", "germany", true], ["Engeland", "engeland", "united-kingdom", false], ["Schotland", "schotland", "united-kingdom", false], ["Ierland", "ierland", "ireland", true], ["Marokko", "marokko", "morocco", false], ["Curaçao", "curacao", "curacao", false], ["Egypte", "", "egypt", false], ["Tunesië", "", "tunisia", false], ["Kaapverdië", "", "cape-verde", false], ["Dubai (VAE)", "", "united-arab-emirates", false], ["Verenigde Staten", "", "united-states", false], ["Mexico", "", "mexico", false], ["Dominicaanse Republiek", "", "dominican-republic", false], ["Aruba", "", "aruba", false], ["Thailand", "", "thailand", false], ["Indonesië / Bali", "", "indonesia", false], ["Japan", "", "japan", false]],S="vluchtwijzer";
+function aw(m,u){return "https://www.awin1.com/cread.php?awinmid="+m+"&awinaffid=3152283&clickref="+S+"&ued="+encodeURIComponent(u);}
+function zet(i){var d=D[i];if(!d)return;var sel=document.getElementById("rpLand");sel.value=i;
+var c=document.getElementById("rpCar");if(d[1]){c.hidden=false;c.href=aw(128671,"https://www.sunnycars.nl/auto-huren/"+d[1]+"/");document.getElementById("rpCarB").textContent="🚗 Huurauto in "+d[0];}else{c.hidden=true;}
+document.getElementById("rpSim").href=aw(128623,"https://saily.com/nl/esim-"+d[2]+"/");document.getElementById("rpSimB").textContent="📶 eSIM voor "+d[0];
+document.getElementById("rpSimT").textContent=d[3]?"In de EU, Noorwegen en IJsland werkt je eigen bundel meestal gewoon. Extra data nodig? Bekijk Saily →":"Buiten de EU is roamen duur. Regel vooraf data via Saily →";
+document.querySelectorAll("#reispartner [data-rp]").forEach(function(b){b.classList.toggle("on",+b.dataset.rp===i);});
+try{localStorage.setItem("rp_land",i);}catch(e){}}
+document.getElementById("rpLand").addEventListener("change",function(e){zet(+e.target.value);});
+document.querySelector("#reispartner .rp-chips").addEventListener("click",function(e){var b=e.target.closest("[data-rp]");if(b)zet(+b.dataset.rp);});
+var st=0;try{st=+(localStorage.getItem("rp_land")||0);}catch(e){}zet(st);})();</script>
 
 <details class="card" id="air">
   <summary>Liever direct bij de maatschappij?</summary>
