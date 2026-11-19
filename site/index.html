@@ -688,8 +688,8 @@ const PAID=[
   url:(o,s)=>`https://www.edreams.nl/travel/#results/type=${s.ow?"O":"R"};dep=${s.d1};from=${o};to=${s.t}${s.ow?"":";ret="+s.d2};adults=${s.p}`,aff:u=>AWIN(8222,u)},
  {name:"BudgetAir",rank:"NL",tag:"Boekingssite",actief:false,home:true,
   why:"Nederlandse boekingssite voor vliegtickets.",watch:"Vul je reis op de site zelf in.",url:()=>"https://www.budgetair.nl/",aff:u=>AWIN(63496,u)},
- {name:"Vliegwinkel",rank:"NL",tag:"Boekingssite",actief:false,home:true,
-  why:"Nederlandse boekingssite voor vliegtickets.",watch:"Vul je reis op de site zelf in.",url:()=>"https://www.vliegwinkel.nl/",aff:u=>AWIN(63484,u)},
+ {name:"Vliegwinkel",rank:"NL",tag:"Boekingssite",actief:true,home:true,
+  why:"Nederlandse boekingssite voor vliegtickets en vliegvakanties, met veel maatschappijen.",watch:"Vul je reis op de site zelf in.",url:()=>"https://www.vliegwinkel.nl/",aff:u=>AWIN(63484,u)},
  {name:"Gotogate",rank:"",tag:"Boekingssite",actief:false,home:true,
   why:"Boekingssite met veel goedkope combinaties.",watch:"Vul je reis op de site zelf in.",url:()=>"https://www.gotogate.nl/",aff:u=>AWIN(112834,u)},
  {name:"Mytrip",rank:"",tag:"Boekingssite",actief:false,home:true,
@@ -744,6 +744,7 @@ let airFound=null; // {code:{from:Set,price}}
 
 function airLink(code){return AIRHOME[code]?{lvl:"home",url:AIRHOME[code]}:null}
 function drawAir(s){
+  if(ALLEEN_BETAALD){const a=$("air");if(a)a.hidden=true;return}
   const body=$("airBody"); let rows=[];
   if(airFound&&Object.keys(airFound).length){
     $("airSub").textContent="Maatschappijen die deze route vliegen, goedkoopste eerst. Direct boeken scheelt vaak boekingskosten.";
@@ -835,11 +836,11 @@ async function cheapest(s){
       const dep=d.departure_at.slice(0,10), ret=d.return_at?d.return_at.slice(0,10):"";
       const nonstop=d.transfers===0&&(!d.return_at||d.return_transfers===0);
       const fs=["airlines="+d.airline].concat(nonstop?["stops=0"]:[]).join(";");
-      const go=`https://www.momondo.nl/flight-search/${esc(d.origin_airport||d.from)}-${esc(d.destination_airport||s.t)}/${dep}${ret?"/"+ret:""}/${s.p}adults?sort=price_a&fs=${encodeURIComponent(fs)}`;
+      const go=ALLEEN_BETAALD?(LIVE[0].home?LIVE[0].aff(LIVE[0].url()):LIVE[0].aff(LIVE[0].url(d.origin_airport||d.from,{...s,t:d.destination_airport||s.t,d1:dep,d2:ret||s.d2,ow:!ret}))):`https://www.momondo.nl/flight-search/${esc(d.origin_airport||d.from)}-${esc(d.destination_airport||s.t)}/${dep}${ret?"/"+ret:""}/${s.p}adults?sort=price_a&fs=${encodeURIComponent(fs)}`;
       const from=d.origin_airport||d.from, to=d.destination_airport||s.t;
       const city=c=>esc(((BY[c]||{n:c}).n).replace(/ \(.+\)$/,""));
       const backStops=d.return_at?(d.return_transfers===0?"direct":d.return_transfers+" overstap"+(d.return_transfers>1?"pen":"")):"";
-      return `<li><a class="deal" href="${go}" target="_blank" rel="noopener">
+      return `<li><a class="deal" href="${go}" target="_blank" rel="${ALLEEN_BETAALD?"sponsored noopener":"noopener"}">
         <div class="main">
           <div class="who"><span class="badge${i===0?" first":""}">${i===0?"Goedkoopst":"#"+(i+1)}</span><span class="air">${esc(air)}</span><span class="iata" aria-hidden="true">${esc(from)} <i>✈</i> ${esc(to)}</span></div>
           <div class="amt"><span class="from">vanaf</span><b>€${Math.round(d.price)}</b><small>p.p.</small></div>
@@ -847,7 +848,7 @@ async function cheapest(s){
             <div class="leg"><div class="t"><span class="time">${nl(d.departure_at)}${tm(d.departure_at)}</span><span class="badge${d.transfers===0?" ok":""}">${stops}</span></div><span class="way">✈ Heen: ${city(from)} → ${city(to)}</span></div>
             ${d.return_at?`<div class="leg"><div class="t"><span class="time">${nl(d.return_at)}${tm(d.return_at)}</span><span class="badge${d.return_transfers===0?" ok":""}">${backStops}</span></div><span class="way">↩ Terug: ${city(to)} → ${city(from)}</span></div>`:""}
           </div>
-          <p class="fresh">Eerder gevonden prijs. De actuele prijs zie je na één tik.</p>
+          <p class="fresh">${ALLEEN_BETAALD&&LIVE[0].home?"Eerder gevonden prijs. Vul je reis daarna in op de boekingssite voor de actuele prijs.":"Eerder gevonden prijs. De actuele prijs zie je na één tik."}</p>
         </div>
         <div class="cta"><span>Bekijk de actuele prijs en boek</span><span aria-hidden="true">→</span></div></a>${moreSites(d,s,dep,ret,nonstop)}</li>`;
     }).join("")}</ol>
