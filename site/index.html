@@ -363,7 +363,7 @@ h2.big{font-family:var(--f-body)!important;font-weight:700!important;text-transf
 .tegels .ic{font-size:18px!important;line-height:1!important}.tegels b{font-size:13.5px!important}.tegels small{display:none!important}
 .tegels a[target="_blank"] b::after{content:" ↗";color:var(--muted);font-weight:400}
 .tegels-ad{font-size:10.5px!important;margin:0!important}
-.combi h2{margin:0 0 6px}.combi-in{margin:0 0 10px;color:var(--muted,#5d6a61)}.combi-w{min-height:420px}.combi-load{color:var(--muted,#5d6a61);font-size:14px}.combi-ad{font-size:11px;color:var(--muted,#5d6a61);margin:8px 0 0}
+.combi summary{cursor:pointer;list-style:none;display:flex!important;flex-direction:column;align-items:flex-start!important;text-align:left!important;gap:2px;padding-right:28px;position:relative}.combi summary span{font-weight:400!important}.combi summary::-webkit-details-marker{display:none}.combi summary b{font-size:17px}.combi summary span{font-size:14px;color:var(--muted,#5d6a61)}.combi summary::after{content:"▾";position:absolute;right:4px;top:50%;transform:translateY(-50%);color:#0e7c4a;font-size:18px}.combi[open] summary::after{content:"▴"}.combi[open] summary{margin-bottom:10px}.combi-in{margin:0 0 10px;color:var(--muted,#5d6a61)}.combi-w{min-height:420px}.combi-load{color:var(--muted,#5d6a61);font-size:14px}.combi-ad{font-size:11px;color:var(--muted,#5d6a61);margin:8px 0 0}
 /* gbstijl:end */
 </style>
 <script src="/installeer.js" defer></script></head>
@@ -467,20 +467,20 @@ h2.big{font-family:var(--f-body)!important;font-weight:700!important;text-transf
   <div class="cal card" id="cal" hidden></div>
 </section>
 
-<section class="card combi" id="combi" aria-labelledby="combiH">
-  <h2 id="combiH" class="big">Slim combineren</h2>
-  <p class="combi-in">Losse budgetvluchten van 800+ maatschappijen gecombineerd tot één goedkope route. Zoek hier, boek pas als je de prijs ziet.</p>
+<details class="card combi" id="combi">
+  <summary><b>Ook losse vluchten combineren?</b><span>Bekijk meer routes, soms goedkoper met een overstap</span></summary>
+  <p class="combi-in">Losse budgetvluchten van 800+ maatschappijen gecombineerd tot één route. Zoek hier, boek pas als je de prijs ziet.</p>
   <div id="combiW" class="combi-w"><p class="combi-load">Vluchten laden…</p></div>
   <p class="combi-ad">Advertentie · jij betaalt niets extra. Bij zelf-overstappen draag je zelf het risico als een vlucht vertraagd is.</p>
-</section>
+</details>
 <script>
 (function(){var w=document.getElementById("combiW"),done=false,B="https://tpwdg.com/content?currency=eur&trs=603657&shmarker=791152.vluchtwijzer-combi&powered_by=false&locale=nl&show_header=true&limit=5&primary_color=0E7C4A&results_background_color=FFFFFF&form_background_color=FFFFFF&campaign_id=111&promo_id=4478";
 function zet(extra){done=true;var s=document.createElement("script");s.async=true;s.charset="utf-8";s.src=B+extra+"&_="+Date.now();w.innerHTML="";w.appendChild(s);}
 function laad(){if(done)return;var q="&from_name=AMS";try{var v=JSON.parse(localStorage.getItem("vw2")||"null");if(v&&v.o&&v.o.length&&v.t)q=par(v);}catch(e){}zet(q);}
 function par(v){var q="&from_name="+encodeURIComponent(v.o[0])+"&to_name="+encodeURIComponent(v.t);if(v.d1&&v.d1>=new Date().toISOString().slice(0,10)){q+="&departure="+v.d1;if(!v.ow&&v.d2)q+="&return="+v.d2;}return q;}
 window.combiZoek=function(v){if(!done||!v||!v.o||!v.o.length||!v.t)return;zet(par(v));};
-if("IntersectionObserver"in window){var io=new IntersectionObserver(function(e){if(e.some(function(x){return x.isIntersecting})){io.disconnect();laad();}},{rootMargin:"600px"});io.observe(w);}else laad();
-if(location.hash==="#combi")laad();window.addEventListener("hashchange",function(){if(location.hash==="#combi")laad();});})();
+var d=document.getElementById("combi");d.addEventListener("toggle",function(){if(d.open)laad();});
+function open_(){if(location.hash==="#combi"){d.open=true;laad();}}open_();window.addEventListener("hashchange",open_);})();
 </script>
 
 <!-- dcv:start -->
