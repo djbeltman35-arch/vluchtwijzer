@@ -474,7 +474,11 @@ h2.big{font-family:var(--f-body)!important;font-weight:700!important;text-transf
   <p class="combi-ad">Advertentie · jij betaalt niets extra. Bij zelf-overstappen draag je zelf het risico als een vlucht vertraagd is.</p>
 </section>
 <script>
-(function(){var w=document.getElementById("combiW"),done=false;function laad(){if(done)return;done=true;var s=document.createElement("script");s.async=true;s.charset="utf-8";s.src="https://tpwdg.com/content?currency=eur&trs=603657&shmarker=791152.vluchtwijzer-combi&powered_by=false&locale=nl&from_name=AMS&show_header=true&limit=5&primary_color=0E7C4A&results_background_color=FFFFFF&form_background_color=FFFFFF&campaign_id=111&promo_id=4478";w.innerHTML="";w.appendChild(s);}
+(function(){var w=document.getElementById("combiW"),done=false,B="https://tpwdg.com/content?currency=eur&trs=603657&shmarker=791152.vluchtwijzer-combi&powered_by=false&locale=nl&show_header=true&limit=5&primary_color=0E7C4A&results_background_color=FFFFFF&form_background_color=FFFFFF&campaign_id=111&promo_id=4478";
+function zet(extra){done=true;var s=document.createElement("script");s.async=true;s.charset="utf-8";s.src=B+extra+"&_="+Date.now();w.innerHTML="";w.appendChild(s);}
+function laad(){if(done)return;var q="&from_name=AMS";try{var v=JSON.parse(localStorage.getItem("vw2")||"null");if(v&&v.o&&v.o.length&&v.t)q=par(v);}catch(e){}zet(q);}
+function par(v){var q="&from_name="+encodeURIComponent(v.o[0])+"&to_name="+encodeURIComponent(v.t);if(v.d1&&v.d1>=new Date().toISOString().slice(0,10)){q+="&departure="+v.d1;if(!v.ow&&v.d2)q+="&return="+v.d2;}return q;}
+window.combiZoek=function(v){if(!done||!v||!v.o||!v.o.length||!v.t)return;zet(par(v));};
 if("IntersectionObserver"in window){var io=new IntersectionObserver(function(e){if(e.some(function(x){return x.isIntersecting})){io.disconnect();laad();}},{rootMargin:"600px"});io.observe(w);}else laad();
 if(location.hash==="#combi")laad();window.addEventListener("hashchange",function(){if(location.hash==="#combi")laad();});})();
 </script>
@@ -967,6 +971,7 @@ function run(scroll){
   drawSites(s);
   airFound=null; drawAir(s);
   cheapest(s); priceCal(s);
+  if(window.combiZoek) window.combiZoek(s);
   if(scroll) $("cheap").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
 }
 $("f").addEventListener("submit",ev=>{ev.preventDefault();run(true)});
