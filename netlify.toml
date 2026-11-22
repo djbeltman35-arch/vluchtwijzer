@@ -1,7 +1,7 @@
 # Statische site: Netlify zet de map site/ zoals hij is online (geen buildstap) bij elke push naar main.
 [build]
   publish = "site"
-  command = "echo statisch"
+  command = "python3 huisstijl/huisstijl.py site vluchtwijzer"
 
 [functions]
   directory = "netlify/functions"
